@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Proyecto_Final.UI.Registros;
 
 namespace Proyecto_Final
 {
@@ -24,5 +25,15 @@ namespace Proyecto_Final
         {
             InitializeComponent();
         }
+         private void rUsuariosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rUsuarios rUsuarios = new rUsuarios();
+            rUsuarios.Show();
+        }
+        // private void cProyectosMenuItem_Click(object sender, RoutedEventArgs e)
+       // {
+           // cProyectos cProyectos = new cProyectos();
+           // cProyectos.Show();
+       // }
     }
 }

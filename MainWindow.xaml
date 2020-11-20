@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"  Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/Imagenes/Rgi.png">
     <Grid>
+     <StackPanel>
+            <!--——————————————————————————————————————————————[ MENU ITEMS ]——————————————————————————————————————————————-->
+            <Menu Height="24" FontSize="15">
+                <MenuItem Header="Registros">
+                    <MenuItem x:Name="rUsuariosMenuItem" Click="rUsuariosMenuItem_Click" Header="Registrar Usuarios"/>
+                </MenuItem>
+               
+
+               
+
+                <MenuItem Header="Ayuda">
+                    <Menu/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="/Imagenes/menu.png" Width="200"/>
+            <Label Content="Menu Principal" FontWeight="Bold" Height="50" FontSize="15" HorizontalAlignment="Center" />
+            </StackPanel>
 
     </Grid>
 </Window>
