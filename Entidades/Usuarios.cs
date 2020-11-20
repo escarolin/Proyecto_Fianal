@@ -8,7 +8,7 @@ namespace Proyecto_Final.Entidades{
         public int UsuarioId { get; set; }
         public string   Nombres { get; set; }
 
-        public string Apellido { get; set; }
+        public string Apellidos { get; set; }
         public string Clave { get; set; }
 
         public DateTime Fecha { get; set; }= DateTime.Now;

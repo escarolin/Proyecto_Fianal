@@ -1,0 +1,70 @@
+﻿<Window x:Class="Proyecto_Final.UI.Registros.rUsuarios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
+        xmlns:PasswordHelper="clr-namespace:Proyecto_Final.Imagenes.PasswordHelper"
+        mc:Ignorable="d"
+        Title="rUsuarios" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
+            <Label Content="Usuario Id" FontWeight="Bold" FontSize="16"/>
+            <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
+            <StackPanel Orientation="Horizontal" Height="35">
+                <TextBox x:Name="UsuarioIdTextBox" Text="{Binding UsuarioId}" Width="200" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                <Button x:Name="BuscarButton" Margin="80,0,0,0" Width="120" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="30" Source="/Imagenes/Buscar.png" />
+                        <Label Content="Buscar" FontSize="17" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <!--——————————————————————————————————————————————[ Nombres ]——————————————————————————————————————————————-->
+            <Label Content="Nombres" FontWeight="Bold" Margin="0,0,10,0"/>
+            <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" Height="30" VerticalContentAlignment="Center" />
+            <!--——————————————————————————————————————————————[ Nombres ]——————————————————————————————————————————————-->
+            <Label Content="Apellidos" FontWeight="Bold" Margin="0,0,10,0"/>
+            <TextBox x:Name="ApellidosTextBox" Text="{Binding Apellidos}" Height="30" VerticalContentAlignment="Center" />
+            <!--——————————————————————————————————————————————[ Fecha ]——————————————————————————————————————————————-->
+            <Label Content="Fecha " FontWeight="Bold"/>
+            <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}" Height="30" VerticalContentAlignment="Center" IsEnabled="False"/>
+            <!--——————————————————————————————————————————————[ Nombre Usuario ]——————————————————————————————————————————————-->
+            <Label Content="Nombre Usuario" FontWeight="Bold"/>
+            <TextBox x:Name="UsuarioNTextBox" Text="{Binding UsuarioN}" Height="30" VerticalContentAlignment="Center"/>
+            <!--——————————————————————————————————————————————[ Contraseña ]——————————————————————————————————————————————-->
+            <Label Content="Contraseña" FontWeight="Bold"/>
+            <PasswordBox x:Name="ClavePasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Clave, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" VerticalContentAlignment="Center"/>
+            <!--——————————————————————————————————————————————[ Confirmar Contraseña ]——————————————————————————————————————————————-->
+            <Label Content="Confirmar Contraseña" FontWeight="Bold"/>
+            <PasswordBox x:Name="ConfimarClavePasswordBox" PasswordHelper:PasswordHelper.Attach="True" Height="30" VerticalContentAlignment="Center"/>
+            <!--——————————————————————————————————————————————[ BOTON NUEVO ]——————————————————————————————————————————————-->
+            <StackPanel Orientation="Horizontal" Height="35" Margin="0,15,0,0" HorizontalAlignment="Center">
+                <Button x:Name="NuevoButton" Click="NuevoButton_Click" Width="120">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="25" Source="/Imagenes/Nuevo.png"/>
+                        <Label Content="Nuevo" FontSize="17" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+                <!--——————————————————————————————————————————————[ BOTON GUARDAR ]——————————————————————————————————————————————-->
+                <Button x:Name="GuardarButton" Click="GuardarButton_Click" Width="120" Margin="50,0,0,0" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="30" Source="/Imagenes/Guardar.png"/>
+                        <Label Content="Guardar" FontSize="17" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+                <!--——————————————————————————————————————————————[ BOTON ELIMINAR ]——————————————————————————————————————————————-->
+                <Button x:Name="EliminarButton" Click="EliminarButton_Click" Width="120" Margin="50,0,0,0" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="30" Source="/Imagenes/Borrar.png"/>
+                        <Label Content="Eliminar" FontSize="17" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <!--——————————————————————————————————————————————[ INFORMACION ]——————————————————————————————————————————————-->
+            <Label Content="Creado: 29/07/2020        —        ©2020 JL-AR Solutions       —       Modificado: 03/08/2020" 
+                   FontWeight="Bold" FontSize="11" FontStyle="Italic" Foreground="#99000000" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Bottom" />
+            <!--————————————————————————————————————————————————————————————————————————————————————————————————————————————-->
+        </StackPanel>
+    </Grid>
+</Window>
