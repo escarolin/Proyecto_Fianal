@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Proyecto_Final.Entidades{
     public class Usuarios{
+        [Key]
         public int UsuarioId { get; set; }
         public string   Nombres { get; set; }
 

@@ -1,0 +1,47 @@
+﻿<Window x:Class="Proyecto_Final.UI.Longin.Longin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:PasswordHelper="clr-namespace:Proyecto_Final.Imagenes.PasswordHelper"
+        xmlns:local="clr-namespace:Proyecto_Final.UI.Longin"
+        mc:Ignorable="d"
+        Title="Longin" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center">
+            <!--—————————————————————————————————————————[ IMAGEN Y TITULO ]—————————————————————————————————————————-->
+            <Image Source="/Imagenes/Usuarios.png" Height="60" />
+            <Label Content="LogIn" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" />
+            <!--—————————————————————————————————————————[ USUARIO ]—————————————————————————————————————————-->
+            <Label Content="Nombre Usuario" Margin="25,5,0,0"/>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/Usuario.png" Height="30" />
+                <TextBox x:Name="UsuarioNTextBox" Text="{Binding UsuarioN}" Width="235" VerticalContentAlignment="Center" KeyDown="UsuarioNTextBox_KeyDown" />
+            </StackPanel>
+            <!--—————————————————————————————————————————[ CONTRASEÑA ]—————————————————————————————————————————-->
+            <Label Content="Contraseña" Margin="25,10,0,0" />
+            <StackPanel Orientation="Horizontal">
+                <Image Source="//Candado.png" Height="30" />
+                <PasswordBox x:Name="ClavePasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Clave, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="235" VerticalContentAlignment="Center" KeyDown="ClavePasswordBox_KeyDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,25,0,0" HorizontalAlignment="Center" >
+                <!--—————————————————————————————————————————[ BOTON CANCELAR ]—————————————————————————————————————————-->
+                <Button x:Name="CancelarButton" Click="CancelarButton_Click" Width="100" BorderBrush="#FFBEBEBE" Margin="0,0,35,0" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Cancelar.png" Height="25" />
+                        <Label Content="Cancelar" FontWeight="Bold" FontSize="14"/>
+                    </StackPanel>
+                </Button>
+                <!--—————————————————————————————————————————[ BOTON INGRESAR ]—————————————————————————————————————————-->
+                <Button x:Name="IngresarButton" Click="IngresarButton_Click" Width="100" BorderBrush="#FFBEBEBE">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Entrar.png" Height="25"/>
+                        <Label Content="Ingresar" FontWeight="Bold" FontSize="14"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+    
+</Window>
