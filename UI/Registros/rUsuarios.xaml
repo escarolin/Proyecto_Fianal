@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         xmlns:PasswordHelper="clr-namespace:Proyecto_Final.Imagenes.PasswordHelper"
         mc:Ignorable="d"
-        Title="rUsuarios" Height="450" Width="800">
+        Title="rUsuarios" Height="530" Width="510" WindowStartupLocation="CenterScreen" Icon="/Imagenes/reg.png" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
             <Label Content="Usuario Id" FontWeight="Bold" FontSize="16"/>
@@ -61,10 +61,7 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <!--——————————————————————————————————————————————[ INFORMACION ]——————————————————————————————————————————————-->
-            <Label Content="Creado: 29/07/2020        —        ©2020 JL-AR Solutions       —       Modificado: 03/08/2020" 
-                   FontWeight="Bold" FontSize="11" FontStyle="Italic" Foreground="#99000000" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Bottom" />
-            <!--————————————————————————————————————————————————————————————————————————————————————————————————————————————-->
+           
         </StackPanel>
     </Grid>
 </Window>
