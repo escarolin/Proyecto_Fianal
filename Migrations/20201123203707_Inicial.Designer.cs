@@ -9,7 +9,7 @@ using Proyecto_Final.DAL;
 namespace Proyecto_Final.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201122192032_Inicial")]
+    [Migration("20201123203707_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,11 +47,11 @@ namespace Proyecto_Final.Migrations
                         new
                         {
                             UsuarioId = 1,
-                            Apellidos = "Ventura Polanco",
-                            Clave = "f76043a74ec33b6aefbb289050faf7aa8d482095477397e3e63345125d49f527",
+                            Apellidos = "del Programa",
+                            Clave = "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
                             Fecha = new DateTime(2020, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nombres = "Escarolin",
-                            UsuarioN = "Esca"
+                            Nombres = "Administrador",
+                            UsuarioN = "admin"
                         });
                 });
 #pragma warning restore 612, 618

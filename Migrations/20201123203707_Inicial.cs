@@ -27,7 +27,7 @@ namespace Proyecto_Final.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Clave", "Fecha", "Nombres", "UsuarioN" },
-                values: new object[] { 1, "Ventura Polanco", "f76043a74ec33b6aefbb289050faf7aa8d482095477397e3e63345125d49f527", new DateTime(2020, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Escarolin", "Esca" });
+                values: new object[] { 1, "del Programa", "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5", new DateTime(2020, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrador", "admin" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

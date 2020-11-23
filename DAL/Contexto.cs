@@ -13,22 +13,16 @@ namespace Proyecto_Final.DAL{
                     {
                          optionsBuilder.UseSqlite(@"Data Source = Data\Proyecto.db");
                     }
-                protected override void   OnModelCreating (ModelBuilder modelBuilder){
-                     modelBuilder.Entity<Usuarios>().HasData(new Usuarios
+                protected override void   OnModelCreating (ModelBuilder modelBuilder)
+               {modelBuilder.Entity<Usuarios>().HasData(new Usuarios
                     {
-                 
-                 UsuarioId=1, 
-                 Nombres= "Escarolin",
-                 Apellidos="Ventura Polanco",
-                 Fecha= new DateTime(2020,11,22),
-                  UsuarioN="Esca",
-                  Clave="f76043a74ec33b6aefbb289050faf7aa8d482095477397e3e63345125d49f527" });
-
-                }
-
-
-
-    }
-    
+                         UsuarioId=1, 
+                         Nombres= "Administrador",
+                         Apellidos="del Programa",
+                         Fecha= new DateTime(2020,11,22),
+                         UsuarioN="admin",
+                         Clave= "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5"
+               });
+               }
+    } 
 }
-

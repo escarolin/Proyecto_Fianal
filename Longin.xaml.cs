@@ -1,23 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Proyecto_Final.BLL;
 using Proyecto_Final.Entidades;
 using Proyecto_Final.DAL;
 
 namespace Proyecto_Final.UI.Longin
 {
-    /// <summary>
-    /// Interaction logic for Longin.xaml
-    /// </summary>
     public partial class Longin : Window
     {
         Usuarios usuarios = new Usuarios();
@@ -56,7 +45,6 @@ namespace Proyecto_Final.UI.Longin
             {
                 this.Hide();
                 MenuPrincipal.Show();
-                //this.WindowState = WindowState.Minimized; //Minimiza el LogIn
             }
             else
             {
