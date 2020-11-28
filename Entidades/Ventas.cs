@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Proyecto_Final.Entidades{
     public class Ventas{
+        [Key]
         public int VentaId { get; set; }
         public float ITBIS { get; set; }
 
