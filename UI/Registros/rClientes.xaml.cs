@@ -193,9 +193,6 @@ namespace Proyecto_Final.UI.Registros
             }
         }
 
-        private void NombreTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        
     }
 }

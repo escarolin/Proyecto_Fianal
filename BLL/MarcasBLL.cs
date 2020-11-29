@@ -158,7 +158,7 @@ namespace Proyecto_Final.BLL
             return lista;
         }
 
-        public static List<Marcas> GetSuplidores()
+        public static List<Marcas> GetMarcas()
         {
             List<Marcas> lista = new List<Marcas>();
             Contexto contexto = new Contexto();

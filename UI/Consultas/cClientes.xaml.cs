@@ -45,7 +45,7 @@ namespace Proyecto_Final.UI.Consultas
                     case 1:
                         try
                         {
-                            listado = ClientesBLL.GetList(u => u.Nombres.Contains(CriterioTextBox.Text));
+                            listado = ClientesBLL.GetList(u => u.Nombre.Contains(CriterioTextBox.Text));
                         }
                         catch (FormatException)
                         {

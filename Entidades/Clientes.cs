@@ -8,7 +8,7 @@ namespace Proyecto_Final.Entidades{
     public class Clientes{
         [Key]
         public int ClienteId { get; set; }
-        public string Nombres { get; set; }
+        public string Nombre { get; set; }
         public string Direcion { get; set; }
         public int Cedula { get; set; }
         public int Telefono { get; set; }

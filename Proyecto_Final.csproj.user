@@ -14,6 +14,9 @@
     <Compile Update="UI\Registros\rClientes.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\Registros\rProductos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UI\Registros\rUsuarios.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -29,6 +32,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Registros\rClientes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Registros\rProductos.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Registros\rUsuarios.xaml">

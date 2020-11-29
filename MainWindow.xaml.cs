@@ -22,11 +22,32 @@ namespace Proyecto_Final
             rUsuarios rUsuarios = new rUsuarios();
             rUsuarios.Show();
         }
+         private void rClientesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rClientes rClientes = new rClientes();
+            rClientes.Show();
+        }
+         private void rProductosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rProductos rProductos = new rProductos();
+            rProductos.Show();
+        }
+         private void rEntradaProductosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rEntradaProductos rUsuarios = new rEntradaProductos();
+            rUsuarios.Show();
+        }
 
         private void cUsuariosMenuItem_Click(object sender, RoutedEventArgs e)
         {
             cUsuarios cUsuarios = new cUsuarios();
             cUsuarios.Show();
+        }
+
+         private void cClientesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cClientes   cClientes = new cClientes();
+            cClientes.Show();
         }
     }
 }

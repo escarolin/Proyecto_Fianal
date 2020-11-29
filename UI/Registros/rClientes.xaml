@@ -11,7 +11,7 @@
         <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
         <Label Content="Cliente Id" FontWeight="Bold" FontSize="15"/>
         <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="ClienteIdTextBox" Text="{Binding ClienteId}" Width="120" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" TextChanged="EmpleadoIdTextBox_TextChanged"/>
+            <TextBox x:Name="ClienteIdTextBox" Text="{Binding ClienteId}" Width="120" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center"/>
             <!--—————————————————————————————[ Boton Buscar ]—————————————————————————————-->
             <Button x:Name="BuscarButton" Margin="100,0,0,0" Width="110" Click="BuscarButton_Click">
                 <StackPanel Orientation="Horizontal">
@@ -22,7 +22,7 @@
         </StackPanel>
         <!--——————————————————————————————————————————————[ NombreCompleto ]——————————————————————————————————————————————-->
         <Label Content="Nombre" FontWeight="Bold" Margin="0,5,0,0"/>
-        <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" Height="30" VerticalContentAlignment="Center" TextChanged="NombresTextBox_TextChanged"/>
+        <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" Height="30" VerticalContentAlignment="Center"/>
 
         <!--——————————————————————————————————————————————[Apellidos ]——————————————————————————————————————————————-->
         <Label Content="Apellidos" FontWeight="Bold" Margin="0,5,0,0"/>
@@ -32,7 +32,7 @@
         <TextBox x:Name="TelefonoTextBox" Text="{Binding Telefono}" Height="30" MaxLength="10" TextChanged="TelefonoTextBox_TextChanged" VerticalContentAlignment="Center"/>
         <!--——————————————————————————————————————————————[ Telefono ]——————————————————————————————————————————————-->
         <Label Content="Celular" FontWeight="Bold" Margin="0,5,0,0"/>
-        <TextBox x:Name="CelularTextBox" Text="{Binding Celular}" Height="30" MaxLength="10" TextChanged="CelularTextBox_TextChanged" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="CelularTextBox" Text="{Binding Celular}" Height="30" MaxLength="10"  VerticalContentAlignment="Center"/>
         <!--——————————————————————————————————————————————[ Departamento ]——————————————————————————————————————————————-->
         <Label Content="Direcion" FontWeight="Bold" Margin="0,5,0,0"/>
         <TextBox x:Name="DirecionTextBox" Text="{Binding Direcion}" Height="30" VerticalContentAlignment="Center"/>

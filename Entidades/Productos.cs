@@ -8,9 +8,10 @@ namespace Proyecto_Final.Entidades{
         [Key]
         public int ProductoId { get; set; }
         public int UsuarioId { get; set; }
+        public string NombreP{ get; set; }
         public string Descripcion { get; set; }
         public int MarcaId { get; set; }
-        public float Existe { get; set; }
+        public float Existencia { get; set; }
          public double Precio { get; set; }
          public double Ganacia { get; set; }
          public int Cantidad { get; set; }

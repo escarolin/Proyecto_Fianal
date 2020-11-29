@@ -1,4 +1,4 @@
-﻿<Window x:Class="Proyecto_Final.UI.Registros.EntradaProductos"
+﻿<Window x:Class="Proyecto_Final.UI.Registros.rEntradaProductos"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,52 +10,57 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Entrada Producto Id" FontWeight="Bold" FontSize="16"/>
-                
+                <Label Content="Usuario Id" FontWeight="Bold" FontSize="16" Margin="80,0,0,0"/>
+
             </StackPanel>
             <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Height="35">
-                <TextBox x:Name="EntradaLibroIdTextBox" Text="{Binding EntradaProductoId}" Width="150" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" TextChanged="EntradaLibroIdTextbox_TextChanged"/>
+                <TextBox x:Name="EntradaProductoIdTextBox" Text="{Binding EntradaProductoId}" Width="150" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" />
+                <!--—————————————————————————————[ Usuario Id ]—————————————————————————————-->
+                <ComboBox x:Name="UsuarioIdComboBox" SelectedValue="{Binding UsuarioId}" VerticalContentAlignment="Center" Width="100" Margin="50,0,0,0" />
                 
-                <Button x:Name="BuscarButton" Margin="50,0,0,0" Width="120" Click="BuscarButton_Click">
+                <Button x:Name="BuscarButton" Margin="50,0,0,0" Width="120" >
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Imagenes/Buscar.png" />
                         <Label Content="Buscar" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
-            
-            
+
+            <!--——————————————————————————————————————————————[ LibroId ]——————————————————————————————————————————————-->
+            <Label Content="ProductoId" FontWeight="Bold" Margin="0,10,0,0"/>
+            <ComboBox x:Name="ProductoIdComboBox" SelectedValue="{Binding ProductoId}" Height="30" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
             <!--——————————————————————————————————————————————[ Fecha ]——————————————————————————————————————————————-->
             <Label Content="Fecha" FontWeight="Bold"/>
             <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding FechaEntrada}" Height="30" VerticalContentAlignment="Center" />
 
             <!--——————————————————————————————————————————————[nOMBRE ]——————————————————————————————————————————————-->
             <Label Content="Nombre del provedor" FontWeight="Bold" Margin="0,5,0,0"/>
-            <TextBox x:Name="ApellidosTextBox" Text="{Binding Apellidos}" Height="30" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="NombreProvedorTextBox" Text="{Binding NombreProvedor}" Height="30" VerticalContentAlignment="Center"/>
             <!--——————————————————————————————————————————————[Costo]——————————————————————————————————————————————-->
             <Label Content="Costo Producto" FontWeight="Bold" Margin="0,5,0,0"/>
             <TextBox x:Name="CostoTextBox" Text="{Binding Costo}" Height="30" VerticalContentAlignment="Center"/>
             
             <!--——————————————————————————————————————————————[ Cantidad ]——————————————————————————————————————————————-->
             <Label Content="Cantidad" FontWeight="Bold"/>
-            <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}" Height="30" VerticalContentAlignment="Center" TextChanged="CantidadTextBox_TextChanged"/>
+            <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}" Height="30" VerticalContentAlignment="Center" />
             <!--——————————————————————————————————————————————[ BOTON NUEVO ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Height="35" Margin="0,15,0,0" HorizontalAlignment="Center">
-                <Button x:Name="NuevoButton" Click="NuevoButton_Click" Width="120">
+                <Button x:Name="NuevoButton"  Width="120">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="25" Source="/Imagenes/Nuevo.png"/>
                         <Label Content="Nuevo" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
                 <!--——————————————————————————————————————————————[ BOTON GUARDAR ]——————————————————————————————————————————————-->
-                <Button x:Name="GuardarButton" Click="GuardarButton_Click" Width="120" Margin="50,0,0,0" >
+                <Button x:Name="GuardarButton"  Width="120" Margin="50,0,0,0" >
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Imagenes/Guardar.png"/>
                         <Label Content="Guardar" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
                 <!--——————————————————————————————————————————————[ BOTON ELIMINAR ]——————————————————————————————————————————————-->
-                <Button x:Name="EliminarButton" Click="EliminarButton_Click" Width="120" Margin="50,0,0,0" >
+                <Button x:Name="EliminarButton"  Width="120" Margin="50,0,0,0" >
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Imagenes/Borrar.png"/>
                         <Label Content="Eliminar" FontSize="17" FontWeight="Bold"/>
