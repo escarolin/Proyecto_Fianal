@@ -13,6 +13,7 @@ namespace Proyecto_Final.DAL{
                 public DbSet <Productos> Productos { get; set; }
                 public DbSet <Ventas> Ventas { get; set; }
                 public DbSet <Marcas> Marcas{ get; set; }
+                public DbSet <Devoluciones> Devoluciones{ get; set; }
 
                 public DbSet <EntradaProductos> EntradaProductos { get; set; }
                          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
