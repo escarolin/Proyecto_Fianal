@@ -10,8 +10,10 @@ namespace Proyecto_Final.Entidades{
         public int Id { get; set; }
         public int VentaId{ get; set; } 
         public int UsuarioId { get; set; }
-        public int Cantidad { get; set; }
+        public int Cantidadv { get; set; }
         public double Precio { get; set; }
+        public int ProductoId { get; set; }
+        
 
 
         
