@@ -26,10 +26,7 @@ namespace Proyecto_Final.UI.Registros
             InitializeComponent();
             this.DataContext = Devoluciones;
            
-            //—————————————————————————————————————[ ComboBox UsuarioId ]—————————————————————————————————————
-            UsuarioIdComboBox.ItemsSource = UsuariosBLL.GetUsuarios();
-            UsuarioIdComboBox.SelectedValuePath = "UsuarioId";
-            UsuarioIdComboBox.DisplayMemberPath = "NombreUsuario";
+            
         }
 
          private void Cargar()
