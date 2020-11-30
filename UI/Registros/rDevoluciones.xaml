@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Orientation="Vertical" Margin="15">
         <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
-       <StackPanel>
+        <StackPanel>
             <!--—————————————————————————————[ Boton Buscar ]—————————————————————————————-->
             <Button x:Name="BuscarButton" Margin="100,0,0,0" Width="110" >
                 <StackPanel Orientation="Horizontal">
@@ -24,16 +24,17 @@
 
         <!--——————————————————————————————————————————————[ClienteId ]——————————————————————————————————————————————-->
         <Label Content="ClienteId" FontWeight="Bold" Margin="0,5,0,0"/>
-        <TextBox x:Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="30" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="ClienteIdComboBox" SelectedValue="{Binding ClienteId}" Height="30" VerticalContentAlignment="Center"/>
         <!--——————————————————————————————————————————————[ VentaId ]——————————————————————————————————————————————-->
         <Label Content="VentaId" FontWeight="Bold" Margin="0,5,0,0"/>
-        <TextBox x:Name="VentaIdTextBox" Text="{Binding VentaId}" Height="30" MaxLength="10"  VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="VentaIdComboBox" SelectedValue="{Binding VentaId}" Height="30"   VerticalContentAlignment="Center"/>
         <!--——————————————————————————————————————————————[ ProdcutoId ]——————————————————————————————————————————————-->
         <Label Content="ProductoId" FontWeight="Bold" Margin="0,5,0,0"/>
         <TextBox x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Height="30" VerticalContentAlignment="Center"/>
         <!--——————————————————————————————————————————————[ UsuarioId ]——————————————————————————————————————————————-->
-        <Label Content="UsuarioId" FontWeight="Bold" Margin="0,5,0,0"/>
-        <TextBox x:Name="UsuarioIdTextBox" Text="{Binding UsuarioId}" Height="30" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="UsuarioIdComboBox" SelectedValue="{Binding UsuarioId}" VerticalContentAlignment="Center" Width="100" Margin="50,0,0,0" />
+                
+
         <!--——————————————————————————————————————————————[ Fecha ]——————————————————————————————————————————————-->
         <Label Content="Fecha " FontWeight="Bold" Margin="0,5,0,0"/>
         <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}" Height="30" VerticalContentAlignment="Center" IsEnabled="False" />
@@ -54,13 +55,13 @@
                 </StackPanel>
             </Button>
             <!--——————————————————————————————————————————————[ BOTON ELIMINAR ]——————————————————————————————————————————————-->
-            <Button x:Name="EliminarButton" Width="110" Margin="50,0,0,0" >
+            <Button x:Name="EliminarButton"  Width="110" Margin="50,0,0,0" >
                 <StackPanel Orientation="Horizontal">
                     <Image Height="30" Source="/Imagenes/Borrar.png"/>
                     <Label Content="Eliminar" FontSize="16" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
         </StackPanel>
-        </StackPanel>
+     </StackPanel>
     </Grid>
 </Window>
