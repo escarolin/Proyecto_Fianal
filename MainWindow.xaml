@@ -15,6 +15,9 @@
                     <MenuItem x:Name="rClientesMenuItem" Click="rClientesMenuItem_Click" Header="Registrar Clientes"/>
                     <MenuItem x:Name="rEntradaProductosMenuItem" Click="rEntradaProductosMenuItem_Click" Header="Registrar EntradaProductos"/> 
                     <MenuItem x:Name="rVentasMenuItem" Click="rVentasMenuItem_Click" Header="Registrar Ventas"/>
+                    <MenuItem x:Name="rDevolucionesMenuItem" Click="rDevolucionesMenuItem_Click" Header="Registrar Devoluciones"/>
+                     <MenuItem x:Name="rProductosMenuItem" Click="rProductosMenuItem_Click" Header="Registrar Productos"/>
+
 
 
                     
@@ -25,6 +28,11 @@
                 <MenuItem Header="Consultas">
                     <MenuItem x:Name="cUsuariosMenuItem" Click="cUsuariosMenuItem_Click" Header="Consultar Usuarios"/>
                     <MenuItem x:Name="cClientesMenuItem" Click="cClientesMenuItem_Click" Header="Consultar Clientes"/>
+                    <MenuItem x:Name="cDevolucionesMenuItem" Click="cDevolucionesMenuItem_Click" Header="Consultar Devoluciones"/>
+                    <MenuItem x:Name="cEntradaProductosMenuItem" Click="cEntradaProductosMenuItem_Click" Header="Consultar Entrada de Productos"/>
+                    <MenuItem x:Name="cProductosMenuItem" Click="cProductosMenuItem_Click" Header="Consultar Productos"/>
+                   
+                    
                     
                     
 

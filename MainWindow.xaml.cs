@@ -32,6 +32,12 @@ namespace Proyecto_Final
             rProductos rProductos = new rProductos();
             rProductos.Show();
         }
+         private void rDevolucionesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rDevoluciones rDevoluciones = new rDevoluciones();
+            rDevoluciones.Show();
+        }
+
         private void rVentasMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rVentas rVentas = new rVentas();
@@ -53,6 +59,24 @@ namespace Proyecto_Final
         {
             cClientes   cClientes = new cClientes();
             cClientes.Show();
+        }
+
+                 private void cDevolucionesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cDevoluciones   cDevoluciones = new cDevoluciones();
+            cDevoluciones.Show();
+        }
+
+                 private void cProductosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cProductos  cProductos= new cProductos();
+            cProductos.Show();
+        }
+
+                 private void cEntradaProductosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cEntradaProductos  cEntradaProductos = new cEntradaProductos();
+            cEntradaProductos.Show();
         }
     }
 }
