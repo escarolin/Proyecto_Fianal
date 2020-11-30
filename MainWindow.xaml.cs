@@ -32,6 +32,11 @@ namespace Proyecto_Final
             rProductos rProductos = new rProductos();
             rProductos.Show();
         }
+        private void rVentasMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rVentas rVentas = new rVentas();
+            rVentas.Show();
+        }
          private void rEntradaProductosMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rEntradaProductos rUsuarios = new rEntradaProductos();

@@ -19,7 +19,7 @@
                 <!--—————————————————————————————[ Usuario Id ]—————————————————————————————-->
                 <ComboBox x:Name="UsuarioIdComboBox" SelectedValue="{Binding UsuarioId}" VerticalContentAlignment="Center" Width="100" Margin="50,0,0,0" />
                 
-                <Button x:Name="BuscarButton" Margin="50,0,0,0" Width="120" >
+                <Button x:Name="BuscarButton" Margin="50,0,0,0" Width="120"  Click="BuscarButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Imagenes/Buscar.png" />
                         <Label Content="Buscar" FontSize="17" FontWeight="Bold"/>
@@ -46,21 +46,21 @@
             <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}" Height="30" VerticalContentAlignment="Center" />
             <!--——————————————————————————————————————————————[ BOTON NUEVO ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Height="35" Margin="0,15,0,0" HorizontalAlignment="Center">
-                <Button x:Name="NuevoButton"  Width="120">
+                <Button x:Name="NuevoButton"  Width="120" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="25" Source="/Imagenes/Nuevo.png"/>
                         <Label Content="Nuevo" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
                 <!--——————————————————————————————————————————————[ BOTON GUARDAR ]——————————————————————————————————————————————-->
-                <Button x:Name="GuardarButton"  Width="120" Margin="50,0,0,0" >
+                <Button x:Name="GuardarButton"  Width="120" Margin="50,0,0,0"  Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Imagenes/Guardar.png"/>
                         <Label Content="Guardar" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
                 <!--——————————————————————————————————————————————[ BOTON ELIMINAR ]——————————————————————————————————————————————-->
-                <Button x:Name="EliminarButton"  Width="120" Margin="50,0,0,0" >
+                <Button x:Name="EliminarButton"  Width="120" Margin="50,0,0,0"  Click="EliminarButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Imagenes/Borrar.png"/>
                         <Label Content="Eliminar" FontSize="17" FontWeight="Bold"/>

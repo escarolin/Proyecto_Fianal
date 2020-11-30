@@ -9,11 +9,9 @@
     <Grid>
         <StackPanel Orientation="Vertical" Margin="15">
         <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
-        <Label Content="Cliente Id" FontWeight="Bold" FontSize="15"/>
-        <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="ClienteIdTextBox" Text="{Binding ClienteId}" Width="120" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center"/>
+       <StackPanel>
             <!--—————————————————————————————[ Boton Buscar ]—————————————————————————————-->
-            <Button x:Name="BuscarButton" Margin="100,0,0,0" Width="110" Click="BuscarButton_Click">
+            <Button x:Name="BuscarButton" Margin="100,0,0,0" Width="110" >
                 <StackPanel Orientation="Horizontal">
                     <Image Height="30" Source="/Imagenes/Buscar.png" />
                     <Label Content="Buscar" FontSize="16" FontWeight="Bold"/>
@@ -42,7 +40,7 @@
 
         <!--——————————————————————————————————————————————[ BOTON NUEVO ]——————————————————————————————————————————————-->
         <StackPanel Orientation="Horizontal" Height="35" Margin="0,20,0,0" HorizontalAlignment="Center">
-            <Button x:Name="NuevoButton" Click="NuevoButton_Click" Width="110">
+            <Button x:Name="NuevoButton"  Width="110">
                 <StackPanel Orientation="Horizontal">
                     <Image Height="25" Source="/Imagenes/Nuevo.png"/>
                     <Label Content="Limpiar" FontSize="16" FontWeight="Bold"/>
@@ -56,7 +54,7 @@
                 </StackPanel>
             </Button>
             <!--——————————————————————————————————————————————[ BOTON ELIMINAR ]——————————————————————————————————————————————-->
-            <Button x:Name="EliminarButton" Click="EliminarButton_Click" Width="110" Margin="50,0,0,0" >
+            <Button x:Name="EliminarButton" Width="110" Margin="50,0,0,0" >
                 <StackPanel Orientation="Horizontal">
                     <Image Height="30" Source="/Imagenes/Borrar.png"/>
                     <Label Content="Eliminar" FontSize="16" FontWeight="Bold"/>
