@@ -17,6 +17,7 @@ namespace Proyecto_Final.UI.Registros
     public partial class rVentas : Window
     {
         private Ventas ventas = new Ventas();
+
         public rVentas()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace Proyecto_Final.UI.Registros
             //————————————————————————————[ VALORES DEL ComboBox Productos]————————————————————————————————————
             ProductoIdComboBox.ItemsSource = ProductosBLL.GetProductos();
             ProductoIdComboBox.SelectedValuePath = "ProductoId";
-            ProductoIdComboBox.DisplayMemberPath = "Descripcion";
+            ProductoIdComboBox.DisplayMemberPath = "NombreP";
         }
 
         //—————————————————————————————————————————————————————[ CARGAR ]—————————————————————————————————————————————————————
@@ -91,12 +92,14 @@ namespace Proyecto_Final.UI.Registros
             //————————————————————————————————[ Calculos Total ]——————————————————————————————
             double subtotal = (producto.Precio) * (int.Parse(CantidadvTextBox.Text));
             double itbisTotal = ((producto.Itebis) / 100) * subtotal;
-            double total1 = (subtotal + itbisTotal);
 
-            ventas.Total = Convert.ToDouble(total1);
+
+            ventas.Total += (subtotal + itbisTotal);
+
+
             //————————————————————————————————————————————————————————————————————————————————
 
-            this.ventas.Detalle.Add(filaDetalle);
+            ventas.Detalle.Add(filaDetalle);
             Cargar();
 
             ProductoIdComboBox.SelectedIndex = -1;
@@ -108,12 +111,13 @@ namespace Proyecto_Final.UI.Registros
         {
             try
             {
-                double total = Convert.ToDouble(TotalTextBox.Text);
                 if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
                 {
                     var detalle = (VentasDetalle)DetalleDataGrid.SelectedItem;
+                    double itebis = (detalle.productos.Precio * detalle.Cantidadv) * detalle.productos.Itebis / 100;
+                    double total = (detalle.productos.Precio * detalle.Cantidadv) + itebis;
+                   
                     ventas.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
-
                     ventas.Total -= total;
                     Cargar();
                 }
@@ -158,6 +162,5 @@ namespace Proyecto_Final.UI.Registros
                     MessageBox.Show("No se pudo eliminar", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-
     }
 }

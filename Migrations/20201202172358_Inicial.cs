@@ -120,6 +120,7 @@ namespace Proyecto_Final.Migrations
                 {
                     VentaId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    ClienteId = table.Column<int>(type: "INTEGER", nullable: false),
                     ITBIS = table.Column<float>(type: "REAL", nullable: false),
                     Total = table.Column<double>(type: "REAL", nullable: false),
                     UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -129,6 +130,12 @@ namespace Proyecto_Final.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ventas", x => x.VentaId);
+                    table.ForeignKey(
+                        name: "FK_Ventas_Clientes_ClienteId",
+                        column: x => x.ClienteId,
+                        principalTable: "Clientes",
+                        principalColumn: "ClienteId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -190,6 +197,11 @@ namespace Proyecto_Final.Migrations
                 values: new object[] { 1, "del Programa", "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5", new DateTime(2020, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrador", "admin" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Ventas_ClienteId",
+                table: "Ventas",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VentasDetalle_ProductoId",
                 table: "VentasDetalle",
                 column: "ProductoId");
@@ -202,9 +214,6 @@ namespace Proyecto_Final.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Clientes");
-
             migrationBuilder.DropTable(
                 name: "Devoluciones");
 
@@ -225,6 +234,9 @@ namespace Proyecto_Final.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ventas");
+
+            migrationBuilder.DropTable(
+                name: "Clientes");
         }
     }
 }

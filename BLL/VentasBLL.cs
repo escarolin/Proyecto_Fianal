@@ -30,12 +30,10 @@ namespace Proyecto_Final.BLL
 
             try
             {
-               
-                //foreach (var item in ventas.Detalle)
-                //{
-                    //contexto.Entry(item.Ventas).State = EntityState.Modified;
-                //}
-                //———————————————————————————————————————————————————————————————————————————————————————————————————
+                foreach (var item in ventas.Detalle)
+                {
+                    contexto.Entry(item.productos).State = EntityState.Modified;
+                }
 
                 contexto.Ventas.Add(ventas);
                 paso = contexto.SaveChanges() > 0;
@@ -59,7 +57,7 @@ namespace Proyecto_Final.BLL
 
             try
             {
-                contexto.Database.ExecuteSqlRaw($"DELETE FROM Ventas_Detalle WHERE OrdenId={ventas.VentaId}");
+                contexto.Database.ExecuteSqlRaw($"DELETE FROM VentasDetalle WHERE VentaId={ventas.VentaId}");
 
                 foreach (var item in ventas.Detalle)
                 {
@@ -158,7 +156,7 @@ namespace Proyecto_Final.BLL
                 ventas = contexto.Ventas
                     .Where(d => d.VentaId == id)
                     .Include(d => d.Detalle)
-                  
+
                     .SingleOrDefault();
             }
             catch (Exception)

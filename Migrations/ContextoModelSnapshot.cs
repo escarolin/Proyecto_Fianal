@@ -231,6 +231,9 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("FechaF")
                         .HasColumnType("TEXT");
 
@@ -247,6 +250,8 @@ namespace Proyecto_Final.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("VentaId");
+
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("Ventas");
                 });
@@ -276,6 +281,17 @@ namespace Proyecto_Final.Migrations
                     b.HasIndex("VentaId");
 
                     b.ToTable("VentasDetalle");
+                });
+
+            modelBuilder.Entity("Proyecto_Final.Entidades.Ventas", b =>
+                {
+                    b.HasOne("Proyecto_Final.Entidades.Clientes", "clientes")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("clientes");
                 });
 
             modelBuilder.Entity("Proyecto_Final.Entidades.VentasDetalle", b =>

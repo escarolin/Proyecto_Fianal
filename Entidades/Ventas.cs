@@ -10,6 +10,7 @@ namespace Proyecto_Final.Entidades
     {
         [Key]
         public int VentaId { get; set; }
+        public int ClienteId { get; set; }
         public float ITBIS { get; set; }
         public double Total { get; set; }
         public int UsuarioId { get; set; }
@@ -19,5 +20,9 @@ namespace Proyecto_Final.Entidades
 
         [ForeignKey("VentaId")]
         public virtual List<VentasDetalle> Detalle { get; set; } = new List<VentasDetalle>();
+
+
+        [ForeignKey("ClienteId")]
+        public Clientes clientes { get; set; } = new Clientes();
     }
 }
