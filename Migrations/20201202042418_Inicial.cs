@@ -15,9 +15,9 @@ namespace Proyecto_Final.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombre = table.Column<string>(type: "TEXT", nullable: true),
                     Direcion = table.Column<string>(type: "TEXT", nullable: true),
-                    Cedula = table.Column<int>(type: "INTEGER", nullable: false),
-                    Telefono = table.Column<int>(type: "INTEGER", nullable: false),
-                    Celular = table.Column<int>(type: "INTEGER", nullable: false),
+                    Cedula = table.Column<long>(type: "INTEGER", nullable: false),
+                    Telefono = table.Column<long>(type: "INTEGER", nullable: false),
+                    Celular = table.Column<long>(type: "INTEGER", nullable: false),
                     Apellidos = table.Column<string>(type: "TEXT", nullable: true),
                     Email = table.Column<string>(type: "TEXT", nullable: true),
                     FechaR = table.Column<DateTime>(type: "TEXT", nullable: false)
@@ -146,6 +146,12 @@ namespace Proyecto_Final.Migrations
                 {
                     table.PrimaryKey("PK_VentasDetalle", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_VentasDetalle_Productos_ProductoId",
+                        column: x => x.ProductoId,
+                        principalTable: "Productos",
+                        principalColumn: "ProductoId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_VentasDetalle_Ventas_VentaId",
                         column: x => x.VentaId,
                         principalTable: "Ventas",
@@ -184,6 +190,11 @@ namespace Proyecto_Final.Migrations
                 values: new object[] { 1, "del Programa", "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5", new DateTime(2020, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrador", "admin" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_VentasDetalle_ProductoId",
+                table: "VentasDetalle",
+                column: "ProductoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VentasDetalle_VentaId",
                 table: "VentasDetalle",
                 column: "VentaId");
@@ -204,13 +215,13 @@ namespace Proyecto_Final.Migrations
                 name: "Marcas");
 
             migrationBuilder.DropTable(
-                name: "Productos");
-
-            migrationBuilder.DropTable(
                 name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "VentasDetalle");
+
+            migrationBuilder.DropTable(
+                name: "Productos");
 
             migrationBuilder.DropTable(
                 name: "Ventas");

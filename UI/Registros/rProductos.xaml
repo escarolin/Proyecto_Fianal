@@ -10,13 +10,13 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Producto Id" FontWeight="Bold" FontSize="16"/>
-                <Label Content="Usuario Id" FontWeight="Bold" FontSize="16" Margin="50,0,0,0"/>
+                <Label Content="Usuario" FontWeight="Bold" FontSize="16" Margin="70,0,0,0"/>
             </StackPanel>
             <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Height="35">
                 <TextBox x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Width="100" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" />
                 <!--—————————————————————————————[ Usuario Id ]—————————————————————————————-->
-                <ComboBox x:Name="UsuarioIdComboBox" SelectedValue="{Binding UsuarioId}" VerticalContentAlignment="Center" Width="100" Margin="50,0,0,0" />
+                <Label x:Name="UsuarioIdComboBox" Tag="{Binding UsuarioId}" VerticalContentAlignment="Center" Width="100" Margin="50,0,0,0" />
                 <!--—————————————————————————————[ Boton Buscar ]—————————————————————————————-->
                 <Button x:Name="BuscarButton" Margin="50,0,0,0" Width="120" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
@@ -34,13 +34,13 @@
                 <TextBox x:Name="NombrePTextBox" Text="{Binding NombreP}" Width="300" VerticalContentAlignment="Center" />
                 <ComboBox x:Name="MarcaIdComboBox" SelectedValue="{Binding MarcaId}" Width="100" Margin="50,0,0,0" VerticalContentAlignment="Center"/>
             </StackPanel>
-            <!--——————————————————————————————————————————————[ Precio]——————————————————————————————————————————————-->
+            <!--——————————————————————————————————————————————[ Precio ]——————————————————————————————————————————————-->
             <Label Content="Precio" FontWeight="Bold" Margin="0,0,10,0"/>
-            <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}" Height="30" VerticalContentAlignment="Center" MaxLength="13" />
-            <!--——————————————————————————————————————————————[ Descici]——————————————————————————————————————————————-->
+            <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}" Height="30" VerticalContentAlignment="Center"/>
+            <!--——————————————————————————————————————————————[ Descici ]——————————————————————————————————————————————-->
             <Label Content="Descripcion" FontWeight="Bold" Margin="0,0,10,0"/>
             <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" Height="30" VerticalContentAlignment="Center" MaxLength="13"/>
-            <!--——————————————————————————————————————————————[ Descici]——————————————————————————————————————————————-->
+            <!--——————————————————————————————————————————————[ Descici ]——————————————————————————————————————————————-->
             <Label Content="Costo" FontWeight="Bold" Margin="0,0,10,0"/>
             <TextBox x:Name="CostoTextBox" Text="{Binding Costo}" Height="30" VerticalContentAlignment="Center" MaxLength="13"/>
            <!--——————————————————————————————————————————————[ itebis]——————————————————————————————————————————————-->

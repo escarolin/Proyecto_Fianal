@@ -1,24 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Proyecto_Final.BLL;
 using Proyecto_Final.Entidades;
 using Proyecto_Final.DAL;
 
-
 namespace Proyecto_Final.UI.Registros
 {
-    /// <summary>
-    /// Interaction logic for rClientes.xaml
-    /// </summary>
     public partial class rClientes : Window
     {
         private Clientes clientes = new Clientes();
@@ -121,6 +109,21 @@ namespace Proyecto_Final.UI.Registros
                     TelefonoTextBox.Focus();
                     return;
                 }
+                //—————————————————————————————————[ Celular ]—————————————————————————————————
+                if (CelularTextBox.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("El Campo (Teléfono) está vacío.\n\nAsigne un Teléfono al Estudiante.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    CelularTextBox.Text = "0";
+                    CelularTextBox.Focus();
+                    CelularTextBox.SelectAll();
+                    return;
+                }
+                if (CelularTextBox.Text.Length != 10)
+                {
+                    MessageBox.Show($"El Teféfono ({CelularTextBox.Text}) no es válido.\n\nEl Teléfono debe tener 10 dígitos (0-9).", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    CelularTextBox.Focus();
+                    return;
+                }
                 //———————————————————————————————————————————————————————[ VALIDAR SI ESTA VACIO - FIN ]———————————————————————————————————————————————————————
                 var paso = ClientesBLL.Guardar(clientes);
                 if (paso)
@@ -193,6 +196,31 @@ namespace Proyecto_Final.UI.Registros
             }
         }
 
-        
+        private void CelularTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (CelularTextBox.Text.Trim() != string.Empty)
+                {
+                    long.Parse(CelularTextBox.Text);
+                }
+
+                if (CelularTextBox.Text.Length != 10)
+                {
+                    CelularTextBox.Foreground = Brushes.Red;
+                }
+                else
+                {
+                    CelularTextBox.Foreground = Brushes.Green;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("El valor digitado en el campo (Teléfono) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                CelularTextBox.Text = "0";
+                CelularTextBox.Focus();
+                CelularTextBox.SelectAll();
+            }
+        }
     }
 }

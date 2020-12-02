@@ -25,10 +25,10 @@ namespace Proyecto_Final.Migrations
                     b.Property<string>("Apellidos")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Cedula")
+                    b.Property<long>("Cedula")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Celular")
+                    b.Property<long>("Celular")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Direcion")
@@ -43,7 +43,7 @@ namespace Proyecto_Final.Migrations
                     b.Property<string>("Nombre")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Telefono")
+                    b.Property<long>("Telefono")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ClienteId");
@@ -271,6 +271,8 @@ namespace Proyecto_Final.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProductoId");
+
                     b.HasIndex("VentaId");
 
                     b.ToTable("VentasDetalle");
@@ -278,11 +280,19 @@ namespace Proyecto_Final.Migrations
 
             modelBuilder.Entity("Proyecto_Final.Entidades.VentasDetalle", b =>
                 {
+                    b.HasOne("Proyecto_Final.Entidades.Productos", "productos")
+                        .WithMany()
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Proyecto_Final.Entidades.Ventas", null)
                         .WithMany("Detalle")
                         .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("productos");
                 });
 
             modelBuilder.Entity("Proyecto_Final.Entidades.Ventas", b =>

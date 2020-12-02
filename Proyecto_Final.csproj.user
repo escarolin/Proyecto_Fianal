@@ -8,9 +8,6 @@
     <Compile Update="UI\Consultas\cClientes.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\Registros\EntradaProductos.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="UI\Registros\rClientes.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -29,9 +26,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Consultas\cClientes.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\Registros\EntradaProductos.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Registros\rClientes.xaml">

@@ -24,14 +24,13 @@ namespace Proyecto_Final.UI.Registros
         {
             InitializeComponent();
             this.DataContext = productos;
-            //—————————————————————————————————————[ ComboBox UsuarioId ]—————————————————————————————————————
-            UsuarioIdComboBox.ItemsSource = UsuariosBLL.GetUsuarios();
-            UsuarioIdComboBox.SelectedValuePath = "UsuarioId";
-            UsuarioIdComboBox.DisplayMemberPath = "NombreUsuario";
+
             //—————————————————————————————————————[ ComboBox EditorialId ]—————————————————————————————————————
             MarcaIdComboBox.ItemsSource = MarcasBLL.GetMarcas();
             MarcaIdComboBox.SelectedValuePath = "EditorialId";
             MarcaIdComboBox.DisplayMemberPath = "NombreMarca";
+
+
         }
         //——————————————————————————————————————————————————————————————[ Cargar ]———————————————————————————————————————————————————————————————
         private void Cargar()
@@ -99,13 +98,7 @@ namespace Proyecto_Final.UI.Registros
                     ProductoIdTextBox.SelectAll();
                     return;
                 }
-                //—————————————————————————————————[ Usuario Id ]—————————————————————————————————
-                if (UsuarioIdComboBox.Text == string.Empty)
-                {
-                    MessageBox.Show("El Campo (Usuario Id) está vacío.\n\nPorfavor, Seleccione su Nombre de Usuario.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    UsuarioIdComboBox.IsDropDownOpen = true;
-                    return;
-                }
+               
                 //—————————————————————————————————[ Titulo ]—————————————————————————————————
                 if (NombrePTextBox.Text.Trim() == string.Empty)
                 {
@@ -114,6 +107,7 @@ namespace Proyecto_Final.UI.Registros
                     NombrePTextBox.Focus();
                     return;
                 }
+
                 //—————————————————————————————————[ Editorial Id ]—————————————————————————————————
                 if (MarcaIdComboBox.Text == string.Empty)
                 {
@@ -121,20 +115,16 @@ namespace Proyecto_Final.UI.Registros
                     MarcaIdComboBox.IsDropDownOpen = true;
                     return;
                 }
-                //—————————————————————————————————[ ISBN ]—————————————————————————————————
+
+                //—————————————————————————————————[ Precio ]—————————————————————————————————
                 if (PrecioTextBox.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("El Campo (ISBN) está vacío.\n\nEscriba un de ISBN.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("El Campo (Precio) está vacío.\n\nEscriba un de Precio.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                     PrecioTextBox.Clear();
                     PrecioTextBox.Focus();
                     return;
                 }
-                if (PrecioTextBox.Text.Length != 10 && PrecioTextBox.Text.Length != 13)
-                {
-                    MessageBox.Show($"El ISBN ({PrecioTextBox.Text}) no es válido.\n\nEl ISBN debe tener 10 o 13 dígitos (0-9).", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    PrecioTextBox.Focus();
-                    return;
-                }
+                
                 //—————————————————————————————————[ Fecha ]—————————————————————————————————
                 if (FechaPDatePicker.Text.Trim() == string.Empty)
                 {
@@ -142,6 +132,7 @@ namespace Proyecto_Final.UI.Registros
                     FechaPDatePicker.Focus();
                     return;
                 }
+
                 //—————————————————————————————————[ Existencia ]—————————————————————————————————
                 if (ExistenciaTextBox.Text.Trim() == string.Empty)
                 {
@@ -151,6 +142,7 @@ namespace Proyecto_Final.UI.Registros
                     ExistenciaTextBox.SelectAll();
                     return;
                 }
+
                 //———————————————————————————————————————————————————————[ VALIDAR SI ESTA VACIO - FIN ]———————————————————————————————————————————————————————
                 var paso = ProductosBLL.Guardar(productos);
                 if (paso)
