@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         mc:Ignorable="d"
-        Title="Registro Empleado" Height="670" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/reg.png" ResizeMode="CanMinimize">
+        Title="Registro Empleado" Height="550" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/reg.png" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
@@ -15,8 +15,11 @@
             <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Height="35">
                 <TextBox x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Width="100" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" />
+               
                 <!--—————————————————————————————[ Usuario Id ]—————————————————————————————-->
-                <Label x:Name="UsuarioIdComboBox" Tag="{Binding UsuarioId}" VerticalContentAlignment="Center" Width="100" Margin="50,0,0,0" />
+               
+                <ComboBox x:Name="UsuarioIdComboBox" SelectedValue="{Binding UsuarioId}" VerticalContentAlignment="Center" Width="100" Margin="50,0,0,0" />
+
                 <!--—————————————————————————————[ Boton Buscar ]—————————————————————————————-->
                 <Button x:Name="BuscarButton" Margin="50,0,0,0" Width="120" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
@@ -25,42 +28,58 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
+            
+            <!--——————————————————————————————————————————————[ Fecha ]——————————————————————————————————————————————-->
+            <Label Content="Fecha" FontWeight="Bold"/>
+            <DatePicker x:Name="FechaPDatePicker" SelectedDate="{Binding FechaP}" Height="30" VerticalContentAlignment="Center" Width="150" HorizontalAlignment="Left" IsEnabled="False"/>
+            
             <!--——————————————————————————————————————————————[ Nombre ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
                 <Label Content="Nombre" FontWeight="Bold"/>
                 <Label Content="Marca Id" FontWeight="Bold" Margin="322,0,0,0" />
             </StackPanel>
+            <!--——————————————————————————————————————————————[ Marca ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Height="30" >
                 <TextBox x:Name="NombrePTextBox" Text="{Binding NombreP}" Width="300" VerticalContentAlignment="Center" />
                 <ComboBox x:Name="MarcaIdComboBox" SelectedValue="{Binding MarcaId}" Width="100" Margin="50,0,0,0" VerticalContentAlignment="Center"/>
             </StackPanel>
-            <!--——————————————————————————————————————————————[ Precio ]——————————————————————————————————————————————-->
-            <Label Content="Precio" FontWeight="Bold" Margin="0,0,10,0"/>
-            <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}" Height="30" VerticalContentAlignment="Center"/>
-            <!--——————————————————————————————————————————————[ Descici ]——————————————————————————————————————————————-->
+            
+            <!--——————————————————————————————————————————————[ Descripcion ]——————————————————————————————————————————————-->
             <Label Content="Descripcion" FontWeight="Bold" Margin="0,0,10,0"/>
-            <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" Height="30" VerticalContentAlignment="Center" MaxLength="13"/>
-            <!--——————————————————————————————————————————————[ Descici ]——————————————————————————————————————————————-->
-            <Label Content="Costo" FontWeight="Bold" Margin="0,0,10,0"/>
-            <TextBox x:Name="CostoTextBox" Text="{Binding Costo}" Height="30" VerticalContentAlignment="Center" MaxLength="13"/>
-           <!--——————————————————————————————————————————————[ itebis]——————————————————————————————————————————————-->
-            <Label Content="%ITBIS" FontWeight="Bold" Margin="0,0,10,0"/>
-            <TextBox x:Name="ItebisTextBox" Text="{Binding Itebis}" Height="30" VerticalContentAlignment="Center" MaxLength="13"/>
+            <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" Height="30" VerticalContentAlignment="Center"/>
 
-            <!--——————————————————————————————————————————————[ Cantidad]——————————————————————————————————————————————-->
-            <Label Content="Cantidad" FontWeight="Bold" Margin="0,0,10,0"/>
-            <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}" Height="30" VerticalContentAlignment="Center" MaxLength="13"/>
-           <!--——————————————————————————————————————————————[ Descici]——————————————————————————————————————————————-->
-            <Label Content="Ganancia" FontWeight="Bold" Margin="0,0,10,0"/>
-            <TextBox x:Name="GanaciaTextBox" Text="{Binding Ganacia}" Height="30" VerticalContentAlignment="Center" MaxLength="13"/>
-            <!--——————————————————————————————————————————————[ Fecha ]——————————————————————————————————————————————-->
-            <Label Content="Fecha" FontWeight="Bold"/>
-            <DatePicker x:Name="FechaPDatePicker" SelectedDate="{Binding FechaP}" Height="30" VerticalContentAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <!--——————————————————————————————————————————————[ Precio ]——————————————————————————————————————————————-->
+                <StackPanel Orientation="Vertical" Margin="0,0,50,0" >
+                    <Label Content="Precio" FontWeight="Bold" Margin="0,0,10,0" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}" Width="200" Height="30" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <!--——————————————————————————————————————————————[ Costo ]——————————————————————————————————————————————-->
+                    <Label Content="Costo" FontWeight="Bold" Margin="0,0,10,0" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="CostoTextBox" Text="{Binding Costo}" Width="200" Height="30" VerticalContentAlignment="Center" TextChanged="CostoTextBox_TextChanged"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
+                <!--——————————————————————————————————————————————[ ITBIS]——————————————————————————————————————————————-->
+                <StackPanel Orientation="Vertical" Margin="0,0,50,0" >
+                    <Label Content="% ITBIS" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="ItebisTextBox" Text="{Binding Itebis}" Width="200" Height="30" VerticalContentAlignment="Center" MaxLength="2"/>
+                </StackPanel>
+                <!--——————————————————————————————————————————————[ Ganancia ]——————————————————————————————————————————————-->
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Ganancia" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="GanaciaTextBox" Text="{Binding Ganacia}" Width="200" Height="30" VerticalContentAlignment="Center" IsReadOnly="True"/>
+                </StackPanel>
+            </StackPanel>
+
             <!--——————————————————————————————————————————————[ Existencia ]——————————————————————————————————————————————-->
-            <Label Content="Existencia" FontWeight="Bold"/>
-            <TextBox x:Name="ExistenciaTextBox" Text="{Binding Existencia}" Height="30" VerticalContentAlignment="Center" TextChanged="ExistenciaTextBox_TextChanged" IsReadOnly="True"/>
+            <Label Content="Existencia" FontWeight="Bold" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            <TextBox x:Name="ExistenciaTextBox" Text="{Binding Existencia}" Height="30" Width="100" VerticalContentAlignment="Center" TextChanged="ExistenciaTextBox_TextChanged" IsReadOnly="True"/>
+           
             <!--——————————————————————————————————————————————[ BOTON NUEVO ]——————————————————————————————————————————————-->
-            <StackPanel Orientation="Horizontal" Height="35" Margin="0,15,0,0" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Height="35" Margin="0,20,0,0" HorizontalAlignment="Center">
                 <Button x:Name="NuevoButton" Click="NuevoButton_Click" Width="120">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="25" Source="/Imagenes/Nuevo.png"/>
@@ -82,7 +101,7 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-            
+
         </StackPanel>
     </Grid>
 </Window>

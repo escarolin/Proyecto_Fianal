@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         mc:Ignorable="d"
-        Title="Registro Empleado" Height="670" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/reg.png" ResizeMode="CanMinimize">
+        Title="Registro Empleado" Height="770" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/reg.png" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="15">
             <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
             <Label Content="Cliente Id" FontWeight="Bold" FontSize="15"/>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-2.439"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.751"/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
                 <TextBox x:Name="ClienteIdTextBox" Text="{Binding ClienteId}" Width="120" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center"/>
                 <!--—————————————————————————————[ Boton Buscar ]—————————————————————————————-->
                 <Button x:Name="BuscarButton" Margin="100,0,0,0" Width="110" Click="BuscarButton_Click">
@@ -20,6 +28,11 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
+
+            <!--—————————————————————————————[ Usuario Id ]—————————————————————————————-->
+            <Label Content="Usuario Id" FontWeight="Bold" FontSize="16" Margin="00,25,0,0"/>
+            <ComboBox x:Name="UsuarioIdComboBox" SelectedValue="{Binding UsuarioId}" VerticalContentAlignment="Center" Width="100" Margin="00,15,360,0" />
+
             <!--——————————————————————————————————————————————[ Nombre ]——————————————————————————————————————————————-->
             <Label Content="Nombre" FontWeight="Bold" Margin="0,5,0,0"/>
             <TextBox x:Name="NombresTextBox" Text="{Binding Nombre}" Height="30" VerticalContentAlignment="Center"/>

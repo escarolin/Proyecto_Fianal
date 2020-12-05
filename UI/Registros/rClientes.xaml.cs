@@ -15,6 +15,10 @@ namespace Proyecto_Final.UI.Registros
             InitializeComponent();
 
             this.DataContext = clientes;
+            //—————————————————————————————————————[ ComboBox UsuarioId ]—————————————————————————————————————
+            UsuarioIdComboBox.ItemsSource = UsuariosBLL.GetUsuarios();
+            UsuarioIdComboBox.SelectedValuePath = "UsuarioId";
+            UsuarioIdComboBox.DisplayMemberPath = "NombreUsuario";
         }
 
         //——————————————————————————————————————————————————————————————[ Cargar ]———————————————————————————————————————————————————————————————
@@ -222,5 +226,7 @@ namespace Proyecto_Final.UI.Registros
                 CelularTextBox.SelectAll();
             }
         }
+
+        
     }
 }

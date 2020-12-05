@@ -25,10 +25,14 @@ namespace Proyecto_Final.UI.Registros
             InitializeComponent();
             this.DataContext = productos;
 
-            //—————————————————————————————————————[ ComboBox EditorialId ]—————————————————————————————————————
+            //—————————————————————————————————————[ ComboBox MarcaId ]—————————————————————————————————————
             MarcaIdComboBox.ItemsSource = MarcasBLL.GetMarcas();
-            MarcaIdComboBox.SelectedValuePath = "EditorialId";
+            MarcaIdComboBox.SelectedValuePath = "MarcaId";
             MarcaIdComboBox.DisplayMemberPath = "NombreMarca";
+            //—————————————————————————————————————[ ComboBox UsuarioId ]—————————————————————————————————————
+            UsuarioIdComboBox.ItemsSource = UsuariosBLL.GetUsuarios();
+            UsuarioIdComboBox.SelectedValuePath = "UsuarioId";
+            UsuarioIdComboBox.DisplayMemberPath = "NombreUsuario";
 
 
         }
@@ -98,7 +102,7 @@ namespace Proyecto_Final.UI.Registros
                     ProductoIdTextBox.SelectAll();
                     return;
                 }
-               
+
                 //—————————————————————————————————[ Titulo ]—————————————————————————————————
                 if (NombrePTextBox.Text.Trim() == string.Empty)
                 {
@@ -124,7 +128,7 @@ namespace Proyecto_Final.UI.Registros
                     PrecioTextBox.Focus();
                     return;
                 }
-                
+
                 //—————————————————————————————————[ Fecha ]—————————————————————————————————
                 if (FechaPDatePicker.Text.Trim() == string.Empty)
                 {
@@ -235,5 +239,17 @@ namespace Proyecto_Final.UI.Registros
                 }
             }
         }
+
+        private void CostoTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double precio = Convert.ToDouble(PrecioTextBox.Text.ToString());
+            double costo = Convert.ToDouble(CostoTextBox.Text.ToString());
+
+            double ganancia = (precio - costo);
+
+            GanaciaTextBox.Text = Convert.ToString(Math.Round(ganancia, 2));
+            productos.Ganacia = Convert.ToDouble(GanaciaTextBox.Text);
+        }
     }
 }
+                                                      

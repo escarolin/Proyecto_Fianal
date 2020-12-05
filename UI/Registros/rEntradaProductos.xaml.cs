@@ -25,7 +25,6 @@ namespace Proyecto_Final.UI.Registros
         {
             InitializeComponent();
             this.DataContext = entradaProductos;
-           
             //—————————————————————————————————————[ ComboBox UsuarioId ]—————————————————————————————————————
             UsuarioIdComboBox.ItemsSource = UsuariosBLL.GetUsuarios();
             UsuarioIdComboBox.SelectedValuePath = "UsuarioId";
