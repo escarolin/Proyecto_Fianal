@@ -17,7 +17,7 @@ namespace Proyecto_Final.UI.Registros
     public partial class rVentas : Window
     {
         private Ventas ventas = new Ventas();
-
+        
         public rVentas()
         {
             InitializeComponent();
@@ -80,13 +80,14 @@ namespace Proyecto_Final.UI.Registros
         //—————————————————————————————————————————————————————[ AGREGAR FILA ]—————————————————————————————————————————————————————
         private void AgregarFilaButton_Click(object sender, RoutedEventArgs e)
         {
-            Productos producto = (Productos)ProductoIdComboBox.SelectedItem;
+            var producto = (Productos)ProductoIdComboBox.SelectedItem;
             var filaDetalle = new VentasDetalle
             {
-                VentaId = this.ventas.VentaId,
+
+                VentaId = ventas.VentaId,
                 ProductoId = Convert.ToInt32(ProductoIdComboBox.SelectedValue.ToString()),
-                productos = (Productos)ProductoIdComboBox.SelectedItem,
-                Cantidadv = Convert.ToInt32(CantidadvTextBox.Text)
+                Cantidadv = Convert.ToInt32(CantidadvTextBox.Text),
+                productos = producto
             };
 
             //————————————————————————————————[ Calculos Total ]——————————————————————————————
@@ -98,8 +99,9 @@ namespace Proyecto_Final.UI.Registros
 
 
             //————————————————————————————————————————————————————————————————————————————————
-
+            MessageBox.Show(filaDetalle.ProductoId.ToString());
             ventas.Detalle.Add(filaDetalle);
+            
             Cargar();
 
             ProductoIdComboBox.SelectedIndex = -1;
@@ -139,7 +141,7 @@ namespace Proyecto_Final.UI.Registros
                 if (!Validar())
                     return;
 
-                var paso = VentasBLL.Guardar(this.ventas);
+                var paso = VentasBLL.Guardar(ventas);
                 if (paso)
                 {
                     Limpiar();
@@ -162,5 +164,7 @@ namespace Proyecto_Final.UI.Registros
                     MessageBox.Show("No se pudo eliminar", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+       
     }
 }

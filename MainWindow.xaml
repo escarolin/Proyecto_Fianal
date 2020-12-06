@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/Imagenes/Rgi.png">
+        Title="MainWindow"  Height="450" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/Rgi.png">
     <Grid>
-     <StackPanel>
+     <StackPanel Margin="0,0,0,10">
             <!--——————————————————————————————————————————————[ MENU ITEMS ]——————————————————————————————————————————————-->
             <Menu Height="24" FontSize="15">
                 <MenuItem Header="Registros">
@@ -31,6 +31,7 @@
                     <MenuItem x:Name="cDevolucionesMenuItem" Click="cDevolucionesMenuItem_Click" Header="Consultar Devoluciones"/>
                     <MenuItem x:Name="cEntradaProductosMenuItem" Click="cEntradaProductosMenuItem_Click" Header="Consultar Entrada de Productos"/>
                     <MenuItem x:Name="cProductosMenuItem" Click="cProductosMenuItem_Click" Header="Consultar Productos"/>
+                    <MenuItem x:Name="cVentasMenuItem" Click="cVentasMenuItem_Click" Header="Consultar ventas"/>
                    
                     
                     
@@ -45,7 +46,7 @@
         </StackPanel>
 
          <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image Source="/Imagenes/menu.png" Width="200"/>
+            <Image Source="/Imagenes/menu2.jpg" Width="300"/>
             <Label Content="Menu Principal" FontWeight="Bold" Height="50" FontSize="15" HorizontalAlignment="Center" />
             </StackPanel>
 

@@ -15,14 +15,12 @@ namespace Proyecto_Final.Entidades
         public double Total { get; set; }
         public int UsuarioId { get; set; }
         public double Ganacia { get; set; }
+       public int Pr2oductoId { get; set; }
         public DateTime FechaF { get; set; } = DateTime.Now;
 
 
         [ForeignKey("VentaId")]
         public virtual List<VentasDetalle> Detalle { get; set; } = new List<VentasDetalle>();
-
-
-        [ForeignKey("ClienteId")]
-        public Clientes clientes { get; set; } = new Clientes();
+        
     }
 }

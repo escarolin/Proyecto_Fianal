@@ -32,9 +32,10 @@ namespace Proyecto_Final.BLL
             {
                 foreach (var item in ventas.Detalle)
                 {
+                    
                     contexto.Entry(item.productos).State = EntityState.Modified;
                 }
-
+               
                 contexto.Ventas.Add(ventas);
                 paso = contexto.SaveChanges() > 0;
             }
@@ -153,11 +154,7 @@ namespace Proyecto_Final.BLL
 
             try
             {
-                ventas = contexto.Ventas
-                    .Where(d => d.VentaId == id)
-                    .Include(d => d.Detalle)
-
-                    .SingleOrDefault();
+                ventas = contexto.Ventas.Where(d => d.VentaId == id).Include(d => d.Detalle).ThenInclude(p => p.productos).SingleOrDefault();
             }
             catch (Exception)
             {

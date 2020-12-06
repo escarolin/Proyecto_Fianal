@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,7 +17,6 @@ namespace Proyecto_Final.Entidades
         public double Precio { get; set; }
         public int ProductoId { get; set; }
 
-        //———————————————————————————[ ForeingKeys ]———————————————————————————
         [ForeignKey("ProductoId")]
         public Productos productos { get; set; } = new Productos();
     }

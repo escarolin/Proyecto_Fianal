@@ -9,8 +9,8 @@ using Proyecto_Final.DAL;
 namespace Proyecto_Final.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201202172358_Inicial")]
-    partial class Inicial
+    [Migration("20201206070455_Migracion_Inicial")]
+    partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -245,6 +245,9 @@ namespace Proyecto_Final.Migrations
                     b.Property<float>("ITBIS")
                         .HasColumnType("REAL");
 
+                    b.Property<int>("Pr2oductoId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<double>("Total")
                         .HasColumnType("REAL");
 
@@ -252,8 +255,6 @@ namespace Proyecto_Final.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("VentaId");
-
-                    b.HasIndex("ClienteId");
 
                     b.ToTable("Ventas");
                 });
@@ -283,17 +284,6 @@ namespace Proyecto_Final.Migrations
                     b.HasIndex("VentaId");
 
                     b.ToTable("VentasDetalle");
-                });
-
-            modelBuilder.Entity("Proyecto_Final.Entidades.Ventas", b =>
-                {
-                    b.HasOne("Proyecto_Final.Entidades.Clientes", "clientes")
-                        .WithMany()
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("clientes");
                 });
 
             modelBuilder.Entity("Proyecto_Final.Entidades.VentasDetalle", b =>

@@ -49,7 +49,7 @@
                 <DataGrid x:Name="DatosDataGrid" Height="330" IsReadOnly="True" AutoGenerateColumns="False" AlternatingRowBackground="Gainsboro" TextBlock.TextAlignment="Center">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Usuario Id" Binding="{Binding ClienteId}"/>
-                        <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}"/>
+                        <DataGridTextColumn Header="Nombres" Binding="{Binding Nombre}"/>
                         <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"/>
                        
                         <DataGridTextColumn Header="Celular" Binding="{Binding Celular}"/>
