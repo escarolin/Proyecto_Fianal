@@ -199,7 +199,7 @@ namespace Proyecto_Final.UI.Registros
                 TelefonoTextBox.SelectAll();
             }
         }
-
+        //—————————————————————————————————[ Celular ]—————————————————————————————————
         private void CelularTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -220,13 +220,38 @@ namespace Proyecto_Final.UI.Registros
             }
             catch
             {
-                MessageBox.Show("El valor digitado en el campo (Teléfono) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("El valor digitado en el campo (Celular) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                 CelularTextBox.Text = "0";
                 CelularTextBox.Focus();
                 CelularTextBox.SelectAll();
             }
         }
+        //—————————————————————————————————[ Cedula ]—————————————————————————————————
+        private void CedulaTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (CedulaTextBox.Text.Trim() != string.Empty)
+                {
+                    long.Parse(CedulaTextBox.Text);
+                }
 
-        
+                if (CedulaTextBox.Text.Length != 11)
+                {
+                    CedulaTextBox.Foreground = Brushes.Red;
+                }
+                else
+                {
+                    CedulaTextBox.Foreground = Brushes.Black;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("El valor digitado en el campo (Cedula) no es un número.\n\nPor favor, digite números (0-9).", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                CedulaTextBox.Text = "0";
+                CedulaTextBox.Focus();
+                CedulaTextBox.SelectAll();
+            }
+        }
     }
 }

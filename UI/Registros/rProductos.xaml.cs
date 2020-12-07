@@ -93,29 +93,29 @@ namespace Proyecto_Final.UI.Registros
                     return;
 
                 //———————————————————————————————————————————————————————[ VALIDAR SI ESTA VACIO ]———————————————————————————————————————————————————————
-                //—————————————————————————————————[ Libro Id ]—————————————————————————————————
+                //—————————————————————————————————[ Producto Id ]—————————————————————————————————
                 if (ProductoIdTextBox.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("El Campo (Libro Id) está vacío.\n\nAsigne un Id al Libro.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("El Campo (Producto Id) está vacío.\n\nAsigne un Id al Libro.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                     ProductoIdTextBox.Text = "0";
                     ProductoIdTextBox.Focus();
                     ProductoIdTextBox.SelectAll();
                     return;
                 }
 
-                //—————————————————————————————————[ Titulo ]—————————————————————————————————
+                //—————————————————————————————————[ Nombre ]—————————————————————————————————
                 if (NombrePTextBox.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("El Campo (Titulo) está vacío.\n\nEscriba un de Titulo.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("El Campo (Nombre producto) está vacío.\n\nEscriba un Nombre.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                     NombrePTextBox.Clear();
                     NombrePTextBox.Focus();
                     return;
                 }
 
-                //—————————————————————————————————[ Editorial Id ]—————————————————————————————————
+                //—————————————————————————————————[ Marca Id ]—————————————————————————————————
                 if (MarcaIdComboBox.Text == string.Empty)
                 {
-                    MessageBox.Show("El Campo (Editorial Id) está vacío.\n\nPorfavor, Seleccione la Editorial del libro.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("El Campo (Marca Id) está vacío.\n\nPorfavor, Seleccione una marca .", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                     MarcaIdComboBox.IsDropDownOpen = true;
                     return;
                 }
@@ -129,6 +129,15 @@ namespace Proyecto_Final.UI.Registros
                     return;
                 }
 
+                //—————————————————————————————————[ ITBIS ]—————————————————————————————————
+                if (ItebisTextBox.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("El Campo (ITBIS) está vacío.\n\nEscriba un Itbis.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    ItebisTextBox.Focus();
+                    ItebisTextBox.SelectAll();
+                    return;
+                }
+
                 //—————————————————————————————————[ Fecha ]—————————————————————————————————
                 if (FechaPDatePicker.Text.Trim() == string.Empty)
                 {
@@ -138,14 +147,16 @@ namespace Proyecto_Final.UI.Registros
                 }
 
                 //—————————————————————————————————[ Existencia ]—————————————————————————————————
-                if (ExistenciaTextBox.Text.Trim() == string.Empty)
+                if (DescripcionTextBox.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("El Campo (Existencia) está vacío.\n\nEscriba la existencia actual del Libro.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    ExistenciaTextBox.Text = "0";
-                    ExistenciaTextBox.Focus();
-                    ExistenciaTextBox.SelectAll();
+                    MessageBox.Show("El Campo (Descripcion) está vacío.\n\nRealice una despcricion  .", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+
+                    DescripcionTextBox.Focus();
+                    DescripcionTextBox.SelectAll();
                     return;
                 }
+
 
                 //———————————————————————————————————————————————————————[ VALIDAR SI ESTA VACIO - FIN ]———————————————————————————————————————————————————————
                 var paso = ProductosBLL.Guardar(productos);
@@ -165,16 +176,16 @@ namespace Proyecto_Final.UI.Registros
                 if (ProductosBLL.Eliminar(Utiidades.ToInt(ProductoIdTextBox.Text)))
                 {
                     Limpiar();
-                    MessageBox.Show("Registro Eliminado", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Producto Eliminado", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
-                    MessageBox.Show("No se pudo eliminar el registro", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("No se pudo eliminar el producto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         //—————————————————————————————————————————————————————————————[ TEXT CHANGED ]—————————————————————————————————————————————————————————————
 
-        //——————————————————————————————————————————[ LibroId ]——————————————————————————————————————————
-        private void LibroIdTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        //——————————————————————————————————————————[ ProductoId ]——————————————————————————————————————————
+        private void ProductoIdTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
@@ -185,83 +196,82 @@ namespace Proyecto_Final.UI.Registros
             }
             catch
             {
-                MessageBox.Show($"El valor digitado en el campo (Libro Id) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"El valor digitado en el campo (Producto Id) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                 ProductoIdTextBox.Text = "0";
                 ProductoIdTextBox.Focus();
                 ProductoIdTextBox.SelectAll();
             }
         }
-        //——————————————————————————————————————————[ ISBN ]——————————————————————————————————————————
+        //——————————————————————————————————————————[ Precio ]——————————————————————————————————————————
         private void PrecioTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
                 if (PrecioTextBox.Text.Trim() != string.Empty)
                 {
-                    long.Parse(PrecioTextBox.Text);
-                }
-
-                if (PrecioTextBox.Text.Length == 10 || PrecioTextBox.Text.Length == 13)
-                {
-                    PrecioTextBox.Foreground = Brushes.Black;
-                }
-                else
-                {
-                    PrecioTextBox.Foreground = Brushes.Red;
+                    double.Parse(PrecioTextBox.Text);
                 }
             }
             catch
             {
-                MessageBox.Show("El valor digitado en el campo (ISBN) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"El valor digitado en el campo (Precio) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                 PrecioTextBox.Text = "0";
                 PrecioTextBox.Focus();
                 PrecioTextBox.SelectAll();
             }
         }
-        //——————————————————————————————————————————[ Existencia ]——————————————————————————————————————————
-        private void ExistenciaTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            double Existencia;
 
-            if (double.TryParse(ExistenciaTextBox.Text, out Existencia))
+        //——————————————————————————————————————————[ Costo ]——————————————————————————————————————————
+        private void CostoTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
             {
-                if (Existencia < 0)
+                if (PrecioTextBox.Text == string.Empty || CostoTextBox.Text == string.Empty)
                 {
-                    ExistenciaTextBox.Foreground = Brushes.Red;
+                    PrecioTextBox.Text = "0";
+                    CostoTextBox.Text = "0";
                 }
-                if (Existencia == 0)
+                else
                 {
-                    ExistenciaTextBox.Foreground = Brushes.Black;
+                    double precio = Convert.ToDouble(PrecioTextBox.Text.Trim());
+                    double costo = Convert.ToDouble(CostoTextBox.Text.Trim());
+                    double ganancia = (precio - costo);
+
+                    GanaciaTextBox.Text = (Convert.ToDouble(Math.Round(ganancia, 2))).ToString();
+                    productos.Ganacia = Convert.ToDouble(GanaciaTextBox.Text);
+
                 }
-                else if (Existencia > 0)
+
+                if (CostoTextBox.Text.Trim() != string.Empty)
                 {
-                    ExistenciaTextBox.Foreground = Brushes.Green;
+                    double.Parse(CostoTextBox.Text);
                 }
+            }
+            catch
+            {
+                MessageBox.Show($"El valor digitado en el campo (Costo) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                CostoTextBox.Text = "0";
+                CostoTextBox.Focus();
+                CostoTextBox.SelectAll();
             }
         }
-
-        private void CostoTextBox_TextChanged(object sender, TextChangedEventArgs e)
-
+        //——————————————————————————————————————————[ ITBIS ]——————————————————————————————————————————
+        private void ItebisTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (PrecioTextBox.Text==string.Empty || CostoTextBox.Text == string.Empty) {
-                PrecioTextBox.Text = "0";
-                CostoTextBox.Text = "0";
-            }else
+            try
             {
-             double precio = Convert.ToDouble(PrecioTextBox.Text.Trim());
-            double costo = Convert.ToDouble(CostoTextBox.Text.Trim()); 
-                double ganancia = (precio - costo); 
-                
-             GanaciaTextBox.Text =( Convert.ToDouble(Math.Round(ganancia, 2))).ToString();
-            productos.Ganacia = Convert.ToDouble(GanaciaTextBox.Text);
-
+                if (ItebisTextBox.Text.Trim() != string.Empty)
+                {
+                    double.Parse(ItebisTextBox.Text);
+                }
             }
-            
-
-           
-
-           
+            catch
+            {
+                MessageBox.Show($"El valor digitado en el campo (ITBIS) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ItebisTextBox.Text = "0";
+                ItebisTextBox.Focus();
+                ItebisTextBox.SelectAll();
+            }
         }
     }
 }
-                                                      

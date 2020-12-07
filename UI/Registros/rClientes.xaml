@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         mc:Ignorable="d"
-        Title="Registro Empleado" Height="770" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/reg.png" ResizeMode="CanMinimize">
+        Title="Registro de cliente " Height="770" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/reg.png" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="15">
             <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
@@ -51,7 +51,7 @@
             <TextBox x:Name="DirecionTextBox" Text="{Binding Direcion}" Height="30" VerticalContentAlignment="Center"/>
             <!--——————————————————————————————————————————————[ Cedula ]——————————————————————————————————————————————-->
             <Label Content="Cedula" FontWeight="Bold" Margin="0,5,0,0"/>
-            <TextBox x:Name="CedulaTextBox" Text="{Binding Cedula}" Height="30" MaxLength="11" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="CedulaTextBox" Text="{Binding Cedula}" Height="30" MaxLength="11" VerticalContentAlignment="Center" TextChanged="CedulaTextBox_TextChanged"/>
             <!--——————————————————————————————————————————————[ Email ]——————————————————————————————————————————————-->
             <Label Content="Email" FontWeight="Bold" Margin="0,5,0,0"/>
             <TextBox x:Name="EmailTextBox" Text="{Binding Email}" Height="30"  VerticalContentAlignment="Center"/>

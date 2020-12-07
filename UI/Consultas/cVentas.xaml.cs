@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,46 +8,60 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+//Using agregados
+using System.Collections.Generic;
 using Proyecto_Final.BLL;
 using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.UI.Consultas
 {
-    /// <summary>
-    /// Interaction logic for cVentas.xaml
-    /// </summary>
     public partial class cVentas : Window
     {
         public cVentas()
         {
             InitializeComponent();
         }
-
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Ventas> listado = new List<Ventas>();
+            var listado = new List<Ventas>();
 
             if (CriterioTextBox.Text.Trim().Length > 0)
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
                     case 0:
-                        listado = VentasBLL.GetList(p => p.VentaId== Utiidades.ToInt(CriterioTextBox.Text));
+                        try
+                        {
+                            listado = VentasBLL.GetList(p => p.VentaId == int.Parse(CriterioTextBox.Text));
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Debes ingresar un Critero valido para aplicar este filtro.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
                         break;
-
-                        //case 1:
-                        //    listado = VentasBLL.GetList(p => p..Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
-                        //    break;
+                    case 1:
+                        try
+                        {
+                            listado = VentasBLL.GetList(p => p.ClienteId == int.Parse(CriterioTextBox.Text));
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Debes ingresar un Critero valido para aplicar este filtro.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        break;
                 }
             }
             else
             {
+                //MessageBox.Show("Has dejado el Campo (Criterio) vacio.\n\nPor lo tanto, se mostrarán todos los Ventas", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                 listado = VentasBLL.GetList(c => true);
             }
+
             if (DesdeDatePicker.SelectedDate != null)
-                listado = (List<Ventas>)VentasBLL.GetList(p => p.FechaF.Date >= DesdeDatePicker.SelectedDate);
+                listado = VentasBLL.GetList(c => c.FechaF.Date >= DesdeDatePicker.SelectedDate);
+
             if (HastaDatePicker.SelectedDate != null)
-                listado = (List<Ventas>)VentasBLL.GetList(p => p.FechaF.Date <= HastaDatePicker.SelectedDate);
+                listado = VentasBLL.GetList(c => c.FechaF.Date <= HastaDatePicker.SelectedDate);
 
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         mc:Ignorable="d"
-        Title="EntradaProductos" Height="450" Width="500">
+        Title=" Registrar EntradaProductos" Height="450" Width="500">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Horizontal">
@@ -15,7 +15,7 @@
             </StackPanel>
             <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Height="35">
-                <TextBox x:Name="EntradaProductoIdTextBox" Text="{Binding EntradaProductoId}" Width="150" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" />
+                <TextBox x:Name="EntradaProductoIdTextBox" Text="{Binding EntradaProductoId}" Width="150" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" TextChanged="EntradaProductoIdTextBox_TextChanged" />
                 <!--—————————————————————————————[ Usuario Id ]—————————————————————————————-->
                 <ComboBox x:Name="UsuarioIdComboBox" SelectedValue="{Binding UsuarioId}" VerticalContentAlignment="Center" Width="100" Margin="50,0,0,0" />
                 
@@ -41,7 +41,7 @@
 
             <!--——————————————————————————————————————————————[ Cantidad ]——————————————————————————————————————————————-->
             <Label Content="Cantidad" FontWeight="Bold"/>
-            <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}" Height="30" VerticalContentAlignment="Center" />
+            <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}" Height="30" VerticalContentAlignment="Center" TextChanged="CantidadTextBox_TextChanged" />
             <!--——————————————————————————————————————————————[ BOTON NUEVO ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Height="35" Margin="0,15,0,0" HorizontalAlignment="Center">
                 <Button x:Name="NuevoButton"  Width="120" Click="NuevoButton_Click">

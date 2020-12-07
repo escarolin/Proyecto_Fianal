@@ -168,6 +168,22 @@ namespace Proyecto_Final.UI.Registros
             }
         }
 
-
+        private void CantidadvTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (CantidadvTextBox.Text.Trim() != string.Empty)
+                {
+                    double.Parse(CantidadvTextBox.Text);
+                }
+            }
+            catch
+            {
+                MessageBox.Show($"El valor digitado en el campo (Cantidad) debe ser un número.\n\nPor favor, digite un número valido.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                CantidadvTextBox.Text = "0";
+                CantidadvTextBox.Focus();
+                CantidadvTextBox.SelectAll();
+            }
+        }
     }
 }

@@ -78,7 +78,7 @@ namespace Proyecto_Final.UI.Registros
                 this.entradaProductos = new EntradaProductos();
                 this.DataContext = this.entradaProductos;
 
-                MessageBox.Show($"Este Contacto no fue encontrado.\n\nAsegúrese que existe o cree uno nuevo.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"Esta entrada no fue encontrada.\n\nAsegúrese que existe o cree uno nuevo.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 Limpiar();
                 EntradaProductoIdTextBox.SelectAll();
@@ -94,7 +94,7 @@ namespace Proyecto_Final.UI.Registros
                 //—————————————————————————————————[ NombreCompleto ]—————————————————————————————————
                 if (NombreProvedorTextBox.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("El Campo (Nombre Completo) está vacío.\n\nPorfavor, Asigne un Nombre al Contacto.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("El Campo (Nombre Provedor) está vacío.\n\nPorfavor, Asigne un Nombre al Contacto.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                     NombreProvedorTextBox.Clear();
                     NombreProvedorTextBox.Focus();
                     return;
@@ -105,10 +105,10 @@ namespace Proyecto_Final.UI.Registros
                 if (paso)
                 {
                     Limpiar();
-                    MessageBox.Show("Transacción Exitosa", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Entrada guardada ", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
-                    MessageBox.Show("Transacción Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Entrada no se guardo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -122,6 +122,42 @@ namespace Proyecto_Final.UI.Registros
                 }
                 else
                     MessageBox.Show("No se pudo eliminar el registro", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void EntradaProductoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (EntradaProductoIdTextBox.Text.Trim() != string.Empty)
+                {
+                    double.Parse(EntradaProductoIdTextBox.Text);
+                }
+            }
+            catch
+            {
+                MessageBox.Show($"El valor digitado en el campo (Entrada Producto Id) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                EntradaProductoIdTextBox.Text = "0";
+                EntradaProductoIdTextBox.Focus();
+                EntradaProductoIdTextBox.SelectAll();
+            }
+        }
+
+        private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (CantidadTextBox.Text.Trim() != string.Empty)
+                {
+                    double.Parse(CantidadTextBox.Text);
+                }
+            }
+            catch
+            {
+                MessageBox.Show($"El valor digitado en el campo (Cantidad) no es un número.\n\nPor favor, digite un número.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                CantidadTextBox.Text = "0";
+                CantidadTextBox.Focus();
+                CantidadTextBox.SelectAll();
             }
         }
     }
