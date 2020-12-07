@@ -5,27 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/Rgi.png">
+        Title="Menu Principal"  Height="450" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/herra.png">
     <Grid>
         <StackPanel Margin="0,0,0,10">
             <!--——————————————————————————————————————————————[ MENU ITEMS ]——————————————————————————————————————————————-->
             <Menu Height="24" FontSize="15" Background="#FF005B87" Foreground="White">
                 <MenuItem Header="Registros" Background="#FF005B87">
-                    <MenuItem x:Name="rUsuariosMenuItem" Click="rUsuariosMenuItem_Click" Header="Registrar Usuarios" Background="#FF005B87"/>
-                    <MenuItem x:Name="rClientesMenuItem" Click="rClientesMenuItem_Click" Header="Registrar Clientes" Background="#FF005B87"/>
-                    <MenuItem x:Name="rEntradaProductosMenuItem" Click="rEntradaProductosMenuItem_Click" Header="Registrar EntradaProductos" Background="#FF005B87"/>
-                    <MenuItem x:Name="rVentasMenuItem" Click="rVentasMenuItem_Click" Header="Registrar Ventas" Background="#FF005B87"/>
-                    <MenuItem x:Name="rDevolucionesMenuItem" Click="rDevolucionesMenuItem_Click" Header="Registrar Devoluciones" Background="#FF005B87"/>
-                    <MenuItem x:Name="rProductosMenuItem" Click="rProductosMenuItem_Click" Header="Registrar Productos" Background="#FF005B87"/>
+                    <MenuItem x:Name="rUsuariosMenuItem" Click="rUsuariosMenuItem_Click" Header="Registrar Usuarios" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/usuario.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="rClientesMenuItem" Click="rClientesMenuItem_Click" Header="Registrar Clientes" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/Clientes.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="rEntradaProductosMenuItem" Click="rEntradaProductosMenuItem_Click" Header="Registrar EntradaProductos" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/Entrada.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="rVentasMenuItem" Click="rVentasMenuItem_Click" Header="Registrar Ventas" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/ventas.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="rDevolucionesMenuItem" Click="rDevolucionesMenuItem_Click" Header="Registrar Devoluciones" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/Devoluciones.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="rProductosMenuItem" Click="rProductosMenuItem_Click" Header="Registrar Productos" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/producto.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
 
                 <MenuItem Header="Consultas" Background="#FF005B87">
-                    <MenuItem x:Name="cUsuariosMenuItem" Click="cUsuariosMenuItem_Click" Header="Consultar Usuarios" Background="#FF005B87"/>
-                    <MenuItem x:Name="cClientesMenuItem" Click="cClientesMenuItem_Click" Header="Consultar Clientes" Background="#FF005B87"/>
-                    <MenuItem x:Name="cProductosMenuItem" Click="cProductosMenuItem_Click" Header="Consultar Productos" Background="#FF005B87"/>
-                    <MenuItem x:Name="cEntradaProductosMenuItem" Click="cEntradaProductosMenuItem_Click" Header="Consultar Entrada de Productos" Background="#FF005B87"/>
-                    <MenuItem x:Name="cVentasMenuItem" Click="cVentasMenuItem_Click" Header="Consultar Ventas" Background="#FF005B87"/>
-                    <MenuItem x:Name="cDevolucionesMenuItem" Click="cDevolucionesMenuItem_Click" Header="Consultar Devoluciones" Background="#FF005B87"/>
+                    <MenuItem x:Name="cUsuariosMenuItem" Click="cUsuariosMenuItem_Click" Header="Consultar Usuarios" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/consulta.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="cClientesMenuItem" Click="cClientesMenuItem_Click" Header="Consultar Clientes" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/consulta.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="cProductosMenuItem" Click="cProductosMenuItem_Click" Header="Consultar Productos" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/consulta.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="cEntradaProductosMenuItem" Click="cEntradaProductosMenuItem_Click" Header="Consultar Entrada de Productos" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/consulta.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="cVentasMenuItem" Click="cVentasMenuItem_Click" Header="Consultar Ventas" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/consulta.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="cDevolucionesMenuItem" Click="cDevolucionesMenuItem_Click" Header="Consultar Devoluciones" Background="#FF005B87">
+                        <MenuItem.Icon>
+                            <Image Source="/Imagenes/consulta.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
 
                 <MenuItem Header="Ayuda" Background="#FF005B87">

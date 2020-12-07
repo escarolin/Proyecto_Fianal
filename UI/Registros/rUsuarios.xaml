@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         xmlns:PasswordHelper="clr-namespace:Proyecto_Final.Imagenes.PasswordHelper"
         mc:Ignorable="d"
-        Title="rUsuarios" Height="530" Width="510" WindowStartupLocation="CenterScreen" Icon="/Imagenes/reg.png" ResizeMode="CanMinimize">
+        Title="Registrar Usuarios" Height="530" Width="510" WindowStartupLocation="CenterScreen" Icon="/Imagenes/usuario.png" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
             <Label Content="Usuario Id" FontWeight="Bold" FontSize="16"/>

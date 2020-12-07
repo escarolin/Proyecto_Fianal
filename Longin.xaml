@@ -6,42 +6,56 @@
          xmlns:PasswordHelper="clr-namespace:Proyecto_Final.Imagenes.PasswordHelper"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Longin"
         mc:Ignorable="d"
-        Title="Longin" Height="450" Width="800">
+        Title="Longin" Height="350" Width="300">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0.007"/>
+                <GradientStop Color="#FF2FCAFE" Offset="0.5"/>
+                <GradientStop Color="#FF2F92FE" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center">
             <!--—————————————————————————————————————————[ IMAGEN Y TITULO ]—————————————————————————————————————————-->
-            <Image Source="/Imagenes/Usuarios.png" Height="60" />
+            <Image Source="/Imagenes/login.png" Height="60" Margin="0,5,0,0" >
+                <Image.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF1A6279" Offset="1"/>
+                    </LinearGradientBrush>
+                </Image.OpacityMask>
+            </Image>
             <Label Content="LogIn" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" />
             <!--—————————————————————————————————————————[ USUARIO ]—————————————————————————————————————————-->
-            <Label Content="Nombre Usuario" Margin="25,5,0,0"/>
+            <Label Content="Nombre Usuario" Margin="35,5,0,0"/>
             <StackPanel Orientation="Horizontal">
-                <Image Source="/Resources/Usuario.png" Height="30" />
-                <TextBox x:Name="UsuarioNTextBox" Text="{Binding UsuarioN}" Width="235" VerticalContentAlignment="Center" KeyDown="UsuarioNTextBox_KeyDown" />
+                <Image Source="/Imagenes/usuario.png" Height="30" />
+                <TextBox x:Name="UsuarioNTextBox" Text="{Binding UsuarioN}" Width="235" VerticalContentAlignment="Center" KeyDown="UsuarioNTextBox_KeyDown" Margin="5,0,0,0" />
             </StackPanel>
             <!--—————————————————————————————————————————[ CONTRASEÑA ]—————————————————————————————————————————-->
-            <Label Content="Contraseña" Margin="25,10,0,0" />
+            <Label Content="Contraseña" Margin="35,10,0,0" />
             <StackPanel Orientation="Horizontal">
-                <Image Source="//Candado.png" Height="30" />
-                <PasswordBox x:Name="ClavePasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Clave, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="235" VerticalContentAlignment="Center" KeyDown="ClavePasswordBox_KeyDown"/>
+                <Image Source="/Imagenes/contrasena.png" Height="30" />
+                <PasswordBox x:Name="ClavePasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Clave, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="235" VerticalContentAlignment="Center" KeyDown="ClavePasswordBox_KeyDown" Margin="5,0,0,0"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,25,0,0" HorizontalAlignment="Center" >
+            <StackPanel Orientation="Horizontal" Margin="20,25,0,0" HorizontalAlignment="Center" >
                 <!--—————————————————————————————————————————[ BOTON CANCELAR ]—————————————————————————————————————————-->
-                <Button x:Name="CancelarButton" Click="CancelarButton_Click" Width="100" BorderBrush="#FFBEBEBE" Margin="0,0,35,0" >
+                <Button x:Name="CancelarButton" Click="CancelarButton_Click" Width="85" BorderBrush="#FFBEBEBE" Margin="0,0,35,0" >
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Cancelar.png" Height="25" />
-                        <Label Content="Cancelar" FontWeight="Bold" FontSize="14"/>
+                        <Image Source="/Imagenes/Cancelar.png" Height="20" />
+                        <Label Content="Cancelar" FontWeight="Bold" FontSize="12"/>
                     </StackPanel>
                 </Button>
                 <!--—————————————————————————————————————————[ BOTON INGRESAR ]—————————————————————————————————————————-->
-                <Button x:Name="IngresarButton" Click="IngresarButton_Click" Width="100" BorderBrush="#FFBEBEBE">
+                <Button x:Name="IngresarButton" Click="IngresarButton_Click" Width="85" BorderBrush="#FFBEBEBE">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Entrar.png" Height="25"/>
-                        <Label Content="Ingresar" FontWeight="Bold" FontSize="14"/>
+                        <Image Source="/Imagenes/enter.png" Height="20"/>
+                        <Label Content="Ingresar" FontWeight="Bold" FontSize="12"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
         </StackPanel>
-        
+
     </Grid>
-    
+
 </Window>

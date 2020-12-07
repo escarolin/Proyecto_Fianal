@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         mc:Ignorable="d"
-        Title=" Registrar EntradaProductos" Height="450" Width="500">
+        Title=" Registrar EntradaProductos" Height="450" Width="500" Icon="/Imagenes/Entrada.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Horizontal">

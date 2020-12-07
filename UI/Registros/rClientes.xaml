@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         mc:Ignorable="d"
-        Title="Registro de cliente " Height="770" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/reg.png" ResizeMode="CanMinimize">
+        Title="Registro de cliente " Height="770" Width="500" WindowStartupLocation="CenterScreen" Icon="/Imagenes/Clientes.png" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="15">
             <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
@@ -64,7 +64,7 @@
                 <Button x:Name="NuevoButton" Click="NuevoButton_Click" Width="110">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="25" Source="/Imagenes/Nuevo.png"/>
-                        <Label Content="Limpiar" FontSize="16" FontWeight="Bold"/>
+                        <Label Content="Nuevo" FontSize="16" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
                 <!--——————————————————————————————————————————————[ BOTON GUARDAR ]——————————————————————————————————————————————-->
