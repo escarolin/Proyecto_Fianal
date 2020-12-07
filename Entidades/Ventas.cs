@@ -11,16 +11,14 @@ namespace Proyecto_Final.Entidades
         [Key]
         public int VentaId { get; set; }
         public int ClienteId { get; set; }
-        public float ITBIS { get; set; }
-        public double Total { get; set; }
         public int UsuarioId { get; set; }
+        public double ITBIS { get; set; }
+        public double Total { get; set; }
         public double Ganacia { get; set; }
-       public int Pr2oductoId { get; set; }
         public DateTime FechaF { get; set; } = DateTime.Now;
-
 
         [ForeignKey("VentaId")]
         public virtual List<VentasDetalle> Detalle { get; set; } = new List<VentasDetalle>();
-        
+
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Proyecto_Final.Migrations
 {
-    public partial class Migracion_Inicial : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,22 +45,6 @@ namespace Proyecto_Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EntradaProductos",
-                columns: table => new
-                {
-                    EntradaProductoId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    NombreProvedor = table.Column<string>(type: "TEXT", nullable: true),
-                    PrecioProducto = table.Column<double>(type: "REAL", nullable: false),
-                    Cantidad = table.Column<float>(type: "REAL", nullable: false),
-                    FechaEntrada = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EntradaProductos", x => x.EntradaProductoId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Marcas",
                 columns: table => new
                 {
@@ -84,12 +68,11 @@ namespace Proyecto_Final.Migrations
                     NombreP = table.Column<string>(type: "TEXT", nullable: true),
                     Descripcion = table.Column<string>(type: "TEXT", nullable: true),
                     MarcaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Existencia = table.Column<float>(type: "REAL", nullable: false),
                     Precio = table.Column<double>(type: "REAL", nullable: false),
                     Ganacia = table.Column<double>(type: "REAL", nullable: false),
-                    Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
                     Itebis = table.Column<double>(type: "REAL", nullable: false),
                     Costo = table.Column<double>(type: "REAL", nullable: false),
+                    Existencia = table.Column<double>(type: "REAL", nullable: false),
                     FechaP = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -121,16 +104,44 @@ namespace Proyecto_Final.Migrations
                     VentaId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ClienteId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ITBIS = table.Column<float>(type: "REAL", nullable: false),
-                    Total = table.Column<double>(type: "REAL", nullable: false),
                     UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ITBIS = table.Column<double>(type: "REAL", nullable: false),
+                    Total = table.Column<double>(type: "REAL", nullable: false),
                     Ganacia = table.Column<double>(type: "REAL", nullable: false),
-                    Pr2oductoId = table.Column<int>(type: "INTEGER", nullable: false),
                     FechaF = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ventas", x => x.VentaId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EntradaProductos",
+                columns: table => new
+                {
+                    EntradaProductoId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProductoId = table.Column<int>(type: "INTEGER", nullable: false),
+                    NombreProvedor = table.Column<string>(type: "TEXT", nullable: true),
+                    Cantidad = table.Column<double>(type: "REAL", nullable: false),
+                    FechaEntrada = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EntradaProductos", x => x.EntradaProductoId);
+                    table.ForeignKey(
+                        name: "FK_EntradaProductos_Productos_ProductoId",
+                        column: x => x.ProductoId,
+                        principalTable: "Productos",
+                        principalColumn: "ProductoId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EntradaProductos_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "UsuarioId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -140,9 +151,9 @@ namespace Proyecto_Final.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     VentaId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProductoId = table.Column<int>(type: "INTEGER", nullable: false),
                     Cantidadv = table.Column<int>(type: "INTEGER", nullable: false),
-                    Precio = table.Column<double>(type: "REAL", nullable: false),
-                    ProductoId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Precio = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -192,6 +203,16 @@ namespace Proyecto_Final.Migrations
                 values: new object[] { 1, "del Programa", "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5", new DateTime(2020, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrador", "admin" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_EntradaProductos_ProductoId",
+                table: "EntradaProductos",
+                column: "ProductoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EntradaProductos_UsuarioId",
+                table: "EntradaProductos",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VentasDetalle_ProductoId",
                 table: "VentasDetalle",
                 column: "ProductoId");
@@ -217,10 +238,10 @@ namespace Proyecto_Final.Migrations
                 name: "Marcas");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "VentasDetalle");
 
             migrationBuilder.DropTable(
-                name: "VentasDetalle");
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Productos");

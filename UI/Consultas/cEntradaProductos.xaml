@@ -27,8 +27,8 @@
                         <ComboBoxItem Content="NombreProveedor"/>
                         <ComboBoxItem Content="PrecioProducto"/>
                         <ComboBoxItem Content="Cantidad"/>
-                        
-                        
+
+
                     </ComboBox>
                 </StackPanel>
                 <!--——————————————————————————————————————————————[ CRITERIO ]——————————————————————————————————————————————-->
@@ -50,10 +50,8 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="EntradaProductoId" Binding="{Binding EntradaProductoId}"/>
                         <DataGridTextColumn Header="NombreProveedor" Binding="{Binding NombreProveedor}"/>
-                        <DataGridTextColumn Header="PrecioProducto" Binding="{Binding PrecioProducto}"/>
-                       
                         <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
-                         <DataGridTextColumn Header="FechaEntrada" Binding="{Binding FechaEntrada, StringFormat='dd/MM/yyyy'}"/>
+                        <DataGridTextColumn Header="FechaEntrada" Binding="{Binding FechaEntrada, StringFormat='dd/MM/yyyy'}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

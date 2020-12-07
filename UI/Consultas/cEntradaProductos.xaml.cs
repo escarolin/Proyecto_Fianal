@@ -55,16 +55,6 @@ namespace Proyecto_Final.UI.Consultas
                     case 2:
                         try
                         {
-                            listado = EntradaProductosBLL.GetList(u => u.PrecioProducto==double.Parse(CriterioTextBox.Text));
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Debes ingresar un Critero valido para aplicar este filtro.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        }
-                        break;
-                    case 3:
-                        try
-                        {
                             listado = EntradaProductosBLL.GetList(u => u.Cantidad==float.Parse(CriterioTextBox.Text));
                         }
                         catch (FormatException)

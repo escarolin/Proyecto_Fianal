@@ -154,7 +154,7 @@ namespace Proyecto_Final.BLL
             return encontrado;
         }
         //——————————————————————————————————————————————[ GET ]——————————————————————————————————————————————
-        public static List<EntradaProductos> GetEntradasLibros()
+        public static List<EntradaProductos> GetEntradaProductos()
         {
             List<EntradaProductos> lista = new List<EntradaProductos>();
             Contexto contexto = new Contexto();

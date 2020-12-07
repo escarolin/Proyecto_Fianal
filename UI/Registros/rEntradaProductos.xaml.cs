@@ -15,9 +15,6 @@ using Proyecto_Final.BLL;
 
 namespace Proyecto_Final.UI.Registros
 {
-    /// <summary>
-    /// Interaction logic for EntradaProductos.xaml
-    /// </summary>
     public partial class rEntradaProductos : Window
     {
         private EntradaProductos entradaProductos = new EntradaProductos();
@@ -29,9 +26,13 @@ namespace Proyecto_Final.UI.Registros
             UsuarioIdComboBox.ItemsSource = UsuariosBLL.GetUsuarios();
             UsuarioIdComboBox.SelectedValuePath = "UsuarioId";
             UsuarioIdComboBox.DisplayMemberPath = "NombreUsuario";
+
+            ProductoIdComboBox.ItemsSource = ProductosBLL.GetProductos();
+            ProductoIdComboBox.SelectedValuePath = "ProductoId";
+            ProductoIdComboBox.DisplayMemberPath = "NombreP";
         }
 
-         private void Cargar()
+        private void Cargar()
         {
             this.DataContext = null;
             this.DataContext = entradaProductos;
@@ -43,7 +44,7 @@ namespace Proyecto_Final.UI.Registros
             this.DataContext = entradaProductos;
         }
         //Validar
-        
+
         //——————————————————————————————————————————————————————————————[ Nuevo ]———————————————————————————————————————————————————————————————
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
@@ -90,7 +91,7 @@ namespace Proyecto_Final.UI.Registros
             {
                 if (!Validar())
                     return;
-                     //—————————————————————————————————[ NombreCompleto ]—————————————————————————————————
+                //—————————————————————————————————[ NombreCompleto ]—————————————————————————————————
                 if (NombreProvedorTextBox.Text.Trim() == string.Empty)
                 {
                     MessageBox.Show("El Campo (Nombre Completo) está vacío.\n\nPorfavor, Asigne un Nombre al Contacto.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -98,12 +99,20 @@ namespace Proyecto_Final.UI.Registros
                     NombreProvedorTextBox.Focus();
                     return;
                 }
-            }
+                ProductosBLL.SumarEntradaProductos(Convert.ToInt32(ProductoIdComboBox.SelectedValue), Convert.ToDouble(CantidadTextBox.Text)); //-----------------
 
-        
-        
+                var paso = EntradaProductosBLL.Guardar(entradaProductos);
+                if (paso)
+                {
+                    Limpiar();
+                    MessageBox.Show("Transacción Exitosa", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                    MessageBox.Show("Transacción Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-         private void EliminarButton_Click(object sender, RoutedEventArgs e)
+
+        private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             {
                 if (ClientesBLL.Eliminar(int.Parse(EntradaProductoIdTextBox.Text)))
@@ -118,4 +127,3 @@ namespace Proyecto_Final.UI.Registros
     }
 }
 
-       

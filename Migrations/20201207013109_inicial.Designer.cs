@@ -9,8 +9,8 @@ using Proyecto_Final.DAL;
 namespace Proyecto_Final.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201206070455_Migracion_Inicial")]
-    partial class Migracion_Inicial
+    [Migration("20201207013109_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,7 +85,7 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Cantidad")
+                    b.Property<double>("Cantidad")
                         .HasColumnType("REAL");
 
                     b.Property<DateTime>("FechaEntrada")
@@ -94,10 +94,17 @@ namespace Proyecto_Final.Migrations
                     b.Property<string>("NombreProvedor")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("PrecioProducto")
-                        .HasColumnType("REAL");
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("EntradaProductoId");
+
+                    b.HasIndex("ProductoId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("EntradaProductos");
                 });
@@ -152,16 +159,13 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("INTEGER");
-
                     b.Property<double>("Costo")
                         .HasColumnType("REAL");
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("Existencia")
+                    b.Property<double>("Existencia")
                         .HasColumnType("REAL");
 
                     b.Property<DateTime>("FechaP")
@@ -242,11 +246,8 @@ namespace Proyecto_Final.Migrations
                     b.Property<double>("Ganacia")
                         .HasColumnType("REAL");
 
-                    b.Property<float>("ITBIS")
+                    b.Property<double>("ITBIS")
                         .HasColumnType("REAL");
-
-                    b.Property<int>("Pr2oductoId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Total")
                         .HasColumnType("REAL");
@@ -284,6 +285,23 @@ namespace Proyecto_Final.Migrations
                     b.HasIndex("VentaId");
 
                     b.ToTable("VentasDetalle");
+                });
+
+            modelBuilder.Entity("Proyecto_Final.Entidades.EntradaProductos", b =>
+                {
+                    b.HasOne("Proyecto_Final.Entidades.Productos", "productos")
+                        .WithMany()
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Proyecto_Final.Entidades.Usuarios", "usuarios")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
+
+                    b.Navigation("productos");
+
+                    b.Navigation("usuarios");
                 });
 
             modelBuilder.Entity("Proyecto_Final.Entidades.VentasDetalle", b =>

@@ -5,8 +5,6 @@ using System;
 
 namespace Proyecto_Final.DAL
 {
-
-
     public class Contexto : DbContext
     {
         public DbSet<Usuarios> Usuarios { get; set; }
@@ -21,6 +19,7 @@ namespace Proyecto_Final.DAL
         {
             optionsBuilder.UseSqlite(@"Data Source = Data\Proyecto.db");
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuarios>().HasData(new Usuarios
@@ -35,17 +34,18 @@ namespace Proyecto_Final.DAL
 
             modelBuilder.Entity<Marcas>().HasData(new Marcas
             { MarcaId = 1, NombreMarca = " Rotoplas" });
+
             modelBuilder.Entity<Marcas>().HasData(new Marcas
             { MarcaId = 2, NombreMarca = "Truper" });
+
             modelBuilder.Entity<Marcas>().HasData(new Marcas
             { MarcaId = 3, NombreMarca = " IUSA" });
+
             modelBuilder.Entity<Marcas>().HasData(new Marcas
             { MarcaId = 4, NombreMarca = "Austromex" });
+
             modelBuilder.Entity<Marcas>().HasData(new Marcas
             { MarcaId = 5, NombreMarca = "Nacobre" });
-
-
-
         }
     }
 }

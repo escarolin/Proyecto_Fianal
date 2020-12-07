@@ -17,7 +17,7 @@ namespace Proyecto_Final.UI.Registros
     public partial class rVentas : Window
     {
         private Ventas ventas = new Ventas();
-        
+
         public rVentas()
         {
             InitializeComponent();
@@ -87,21 +87,23 @@ namespace Proyecto_Final.UI.Registros
                 VentaId = ventas.VentaId,
                 ProductoId = Convert.ToInt32(ProductoIdComboBox.SelectedValue.ToString()),
                 Cantidadv = Convert.ToInt32(CantidadvTextBox.Text),
-                productos = producto
+                
             };
 
             //————————————————————————————————[ Calculos Total ]——————————————————————————————
             double subtotal = (producto.Precio) * (int.Parse(CantidadvTextBox.Text));
             double itbisTotal = ((producto.Itebis) / 100) * subtotal;
 
-
-            ventas.Total += (subtotal + itbisTotal);
-
+            ventas.Total += Math.Round((subtotal + itbisTotal), 2);
 
             //————————————————————————————————————————————————————————————————————————————————
-            MessageBox.Show(filaDetalle.ProductoId.ToString());
+            filaDetalle.productos = (Productos)ProductoIdComboBox.SelectedItem;
+
+            filaDetalle.productos = producto;
+            //————————————————————————————————————————————————————————————————————————————————
+
             ventas.Detalle.Add(filaDetalle);
-            
+
             Cargar();
 
             ProductoIdComboBox.SelectedIndex = -1;
@@ -118,7 +120,7 @@ namespace Proyecto_Final.UI.Registros
                     var detalle = (VentasDetalle)DetalleDataGrid.SelectedItem;
                     double itebis = (detalle.productos.Precio * detalle.Cantidadv) * detalle.productos.Itebis / 100;
                     double total = (detalle.productos.Precio * detalle.Cantidadv) + itebis;
-                   
+
                     ventas.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
                     ventas.Total -= total;
                     Cargar();
@@ -157,6 +159,7 @@ namespace Proyecto_Final.UI.Registros
             {
                 if (VentasBLL.Eliminar(Utiidades.ToInt(VentaIdTextbox.Text)))
                 {
+                    ventas.Total -= Convert.ToDouble(TotalTextBox.Text);
                     Limpiar();
                     MessageBox.Show("Registro Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -165,6 +168,6 @@ namespace Proyecto_Final.UI.Registros
             }
         }
 
-       
+
     }
 }

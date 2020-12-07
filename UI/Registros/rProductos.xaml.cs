@@ -74,7 +74,7 @@ namespace Proyecto_Final.UI.Registros
             {
                 this.productos = new Productos();
                 this.DataContext = this.productos;
-                MessageBox.Show($"Este Libro no fue encontrado.\n\nAsegúrese que existe o cree una nuevo.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"Este Producto no fue encontrado.\n\nAsegúrese que existe o cree una nuevo.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Limpiar();
                 ProductoIdTextBox.SelectAll();
                 ProductoIdTextBox.Focus();
@@ -241,14 +241,26 @@ namespace Proyecto_Final.UI.Registros
         }
 
         private void CostoTextBox_TextChanged(object sender, TextChangedEventArgs e)
+
         {
-            double precio = Convert.ToDouble(PrecioTextBox.Text.ToString());
-            double costo = Convert.ToDouble(CostoTextBox.Text.ToString());
-
-            double ganancia = (precio - costo);
-
-            GanaciaTextBox.Text = Convert.ToString(Math.Round(ganancia, 2));
+            if (PrecioTextBox.Text==string.Empty || CostoTextBox.Text == string.Empty) {
+                PrecioTextBox.Text = "0";
+                CostoTextBox.Text = "0";
+            }else
+            {
+             double precio = Convert.ToDouble(PrecioTextBox.Text.Trim());
+            double costo = Convert.ToDouble(CostoTextBox.Text.Trim()); 
+                double ganancia = (precio - costo); 
+                
+             GanaciaTextBox.Text =( Convert.ToDouble(Math.Round(ganancia, 2))).ToString();
             productos.Ganacia = Convert.ToDouble(GanaciaTextBox.Text);
+
+            }
+            
+
+           
+
+           
         }
     }
 }

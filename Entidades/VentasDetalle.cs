@@ -13,11 +13,11 @@ namespace Proyecto_Final.Entidades
         [Key]
         public int Id { get; set; }
         public int VentaId { get; set; }
+        public int ProductoId { get; set; }
         public int Cantidadv { get; set; }
         public double Precio { get; set; }
-        public int ProductoId { get; set; }
 
         [ForeignKey("ProductoId")]
-        public Productos productos { get; set; } = new Productos();
+        public virtual Productos productos { get; set; }
     }
 }

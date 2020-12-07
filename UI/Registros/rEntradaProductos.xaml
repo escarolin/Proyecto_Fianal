@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         mc:Ignorable="d"
-        Title="EntradaProductos" Height="450" Width="800">
+        Title="EntradaProductos" Height="450" Width="500">
     <Grid>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+        <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Entrada Producto Id" FontWeight="Bold" FontSize="16"/>
-                <Label Content="Usuario Id" FontWeight="Bold" FontSize="16" Margin="80,0,0,0"/>
+                <Label Content="Usuario Id" FontWeight="Bold" FontSize="16" Margin="45,0,0,0"/>
 
             </StackPanel>
             <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
@@ -38,9 +38,7 @@
             <Label Content="Nombre del provedor" FontWeight="Bold" Margin="0,5,0,0"/>
             <TextBox x:Name="NombreProvedorTextBox" Text="{Binding NombreProvedor}" Height="30" VerticalContentAlignment="Center"/>
             <!--——————————————————————————————————————————————[Costo]——————————————————————————————————————————————-->
-            <Label Content="Costo Producto" FontWeight="Bold" Margin="0,5,0,0"/>
-            <TextBox x:Name="CostoTextBox" Text="{Binding Costo}" Height="30" VerticalContentAlignment="Center"/>
-            
+
             <!--——————————————————————————————————————————————[ Cantidad ]——————————————————————————————————————————————-->
             <Label Content="Cantidad" FontWeight="Bold"/>
             <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}" Height="30" VerticalContentAlignment="Center" />

@@ -32,7 +32,7 @@ namespace Proyecto_Final.BLL
             {
                 foreach (var item in ventas.Detalle)
                 {
-                    
+                    item.productos.Existencia -= item.Cantidadv;
                     contexto.Entry(item.productos).State = EntityState.Modified;
                 }
                
@@ -133,7 +133,7 @@ namespace Proyecto_Final.BLL
 
             try
             {
-                encontrado = contexto.Ventas.Any(o => o.VentaId == id);
+                encontrado = contexto.Ventas.Any(v => v.VentaId == id);
             }
             catch (Exception)
             {
@@ -149,12 +149,12 @@ namespace Proyecto_Final.BLL
         //—————————————————————————————————————————————————————[ BUSCAR ]————————————————————————————————————————————————————
         public static Ventas Buscar(int id)
         {
-            Ventas ventas = new Ventas();
             Contexto contexto = new Contexto();
+            Ventas ventas;
 
             try
             {
-                ventas = contexto.Ventas.Where(d => d.VentaId == id).Include(d => d.Detalle).ThenInclude(p => p.productos).SingleOrDefault();
+                ventas = contexto.Ventas.Where(v => v.VentaId == id).Include(d => d.Detalle).ThenInclude(p => p.productos).SingleOrDefault();
             }
             catch (Exception)
             {
