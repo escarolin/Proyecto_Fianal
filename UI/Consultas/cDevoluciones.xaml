@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Consultas"
         mc:Ignorable="d"
-        Title="cDevoluciones" Height="450" Width="800">
+        Title="Consultar ventas" Height="480" Width="680" WindowStartupLocation="CenterScreen"  ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="0,5,0,0" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Height="60">
@@ -23,12 +23,9 @@
                 <StackPanel  Margin="0,0,10,0" >
                     <Label Content="Filtro:" />
                     <ComboBox x:Name="FiltroComboBox" Width="95" Height="24" >
-                        <ComboBoxItem Content="DevolucionesId"/>
-                        <ComboBoxItem Content="ClienteId"/>
-                        <ComboBoxItem Content="VentaId"/>
-                        <ComboBoxItem Content="ProductoId"/>
-                        <ComboBoxItem Content="UsuarioId"/>
-                        
+                        <ComboBoxItem Content="Préstamo Id"/>
+                        <ComboBoxItem Content="Usuario Id"/>
+                        <ComboBoxItem Content="Estudiante Id"/>
                     </ComboBox>
                 </StackPanel>
                 <!--——————————————————————————————————————————————[ CRITERIO ]——————————————————————————————————————————————-->
@@ -37,7 +34,7 @@
                     <TextBox x:Name="CriterioTextBox" Width="95" Height="24" Margin="0,0,10,0" VerticalContentAlignment="Center" />
                 </StackPanel>
                 <!--——————————————————————————————————————————————[ CONSULTAR ]——————————————————————————————————————————————-->
-                <Button x:Name="ConsultarButton" Height="30" Width="90" >
+                <Button x:Name="ConsultarButton" Height="30" Width="90" Click="ConsultarButton_Click" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/Imagenes/Buscar.png"/>
                         <Label Content="Consultar"/>
@@ -48,13 +45,12 @@
             <StackPanel HorizontalAlignment="Left" Width="635" >
                 <DataGrid x:Name="DatosDataGrid" Height="330" IsReadOnly="True" AutoGenerateColumns="False" AlternatingRowBackground="Gainsboro" TextBlock.TextAlignment="Center">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="DevolucionesId" Binding="{Binding DevolucionesId}"/>
-                        <DataGridTextColumn Header="clienteId" Binding="{Binding ClienteId}"/>
-                        <DataGridTextColumn Header="VentaId" Binding="{Binding VentaId}"/>
-                       
-                        <DataGridTextColumn Header="ProductoId" Binding="{Binding ProductoId}"/>
-                        <DataGridTextColumn Header="UsuarioId" Binding="{Binding UsuarioId}"/>
-                         <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha, StringFormat='dd/MM/yyyy'}"/>
+                        <DataGridTextColumn Header="Venta Id" Binding="{Binding DevolucionId}"/>
+                        <DataGridTextColumn Header="Producto Id" Binding="{Binding ProductoId}"/>
+                        <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha, StringFormat='dd/MM/yyyy'}"/>
+                        <DataGridTextColumn Header="Cliente Id" Binding="{Binding ClienteId}"/>
+                        <DataGridTextColumn Header="Total Devolucion" Binding="{Binding TotalDevoluciones}"/>
+                        <DataGridTextColumn Header="Detalle" Binding="{Binding Detalle}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

@@ -57,11 +57,42 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ClienteId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("TotalDevoluciones")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("VentaId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("DevolucionId");
+
+                    b.HasIndex("ClienteId");
+
+                    b.ToTable("Devoluciones");
+                });
+
+            modelBuilder.Entity("Proyecto_Final.Entidades.DevolucionesDetalle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("Cantidad")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("DevolucionId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductoId")
                         .HasColumnType("INTEGER");
@@ -72,9 +103,13 @@ namespace Proyecto_Final.Migrations
                     b.Property<string>("VentaId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("DevolucionId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Devoluciones");
+                    b.HasIndex("DevolucionId");
+
+                    b.HasIndex("ProductoId");
+
+                    b.ToTable("DevolucionesDetalle");
                 });
 
             modelBuilder.Entity("Proyecto_Final.Entidades.EntradaProductos", b =>
@@ -285,6 +320,34 @@ namespace Proyecto_Final.Migrations
                     b.ToTable("VentasDetalle");
                 });
 
+            modelBuilder.Entity("Proyecto_Final.Entidades.Devoluciones", b =>
+                {
+                    b.HasOne("Proyecto_Final.Entidades.Clientes", "clientes")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("clientes");
+                });
+
+            modelBuilder.Entity("Proyecto_Final.Entidades.DevolucionesDetalle", b =>
+                {
+                    b.HasOne("Proyecto_Final.Entidades.Devoluciones", null)
+                        .WithMany("Detalle")
+                        .HasForeignKey("DevolucionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Proyecto_Final.Entidades.Productos", "productos")
+                        .WithMany()
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("productos");
+                });
+
             modelBuilder.Entity("Proyecto_Final.Entidades.EntradaProductos", b =>
                 {
                     b.HasOne("Proyecto_Final.Entidades.Productos", "productos")
@@ -317,6 +380,11 @@ namespace Proyecto_Final.Migrations
                         .IsRequired();
 
                     b.Navigation("productos");
+                });
+
+            modelBuilder.Entity("Proyecto_Final.Entidades.Devoluciones", b =>
+                {
+                    b.Navigation("Detalle");
                 });
 
             modelBuilder.Entity("Proyecto_Final.Entidades.Ventas", b =>

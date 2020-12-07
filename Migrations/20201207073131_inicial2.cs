@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Proyecto_Final.Migrations
 {
-    public partial class inicial : Migration
+    public partial class inicial2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,23 +25,6 @@ namespace Proyecto_Final.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clientes", x => x.ClienteId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Devoluciones",
-                columns: table => new
-                {
-                    DevolucionId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ClienteId = table.Column<string>(type: "TEXT", nullable: true),
-                    VentaId = table.Column<string>(type: "TEXT", nullable: true),
-                    ProductoId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Devoluciones", x => x.DevolucionId);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,6 +99,30 @@ namespace Proyecto_Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Devoluciones",
+                columns: table => new
+                {
+                    DevolucionId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ClienteId = table.Column<int>(type: "INTEGER", nullable: false),
+                    VentaId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProductoId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    TotalDevoluciones = table.Column<double>(type: "REAL", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Devoluciones", x => x.DevolucionId);
+                    table.ForeignKey(
+                        name: "FK_Devoluciones_Clientes_ClienteId",
+                        column: x => x.ClienteId,
+                        principalTable: "Clientes",
+                        principalColumn: "ClienteId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EntradaProductos",
                 columns: table => new
                 {
@@ -172,6 +179,35 @@ namespace Proyecto_Final.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "DevolucionesDetalle",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Cantidad = table.Column<double>(type: "REAL", nullable: false),
+                    VentaId = table.Column<string>(type: "TEXT", nullable: true),
+                    ProductoId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DevolucionId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DevolucionesDetalle", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DevolucionesDetalle_Devoluciones_DevolucionId",
+                        column: x => x.DevolucionId,
+                        principalTable: "Devoluciones",
+                        principalColumn: "DevolucionId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DevolucionesDetalle_Productos_ProductoId",
+                        column: x => x.ProductoId,
+                        principalTable: "Productos",
+                        principalColumn: "ProductoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Marcas",
                 columns: new[] { "MarcaId", "Descripcion", "NombreMarca" },
@@ -203,6 +239,21 @@ namespace Proyecto_Final.Migrations
                 values: new object[] { 1, "del Programa", "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5", new DateTime(2020, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrador", "admin" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Devoluciones_ClienteId",
+                table: "Devoluciones",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DevolucionesDetalle_DevolucionId",
+                table: "DevolucionesDetalle",
+                column: "DevolucionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DevolucionesDetalle_ProductoId",
+                table: "DevolucionesDetalle",
+                column: "ProductoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EntradaProductos_ProductoId",
                 table: "EntradaProductos",
                 column: "ProductoId");
@@ -226,10 +277,7 @@ namespace Proyecto_Final.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Clientes");
-
-            migrationBuilder.DropTable(
-                name: "Devoluciones");
+                name: "DevolucionesDetalle");
 
             migrationBuilder.DropTable(
                 name: "EntradaProductos");
@@ -241,6 +289,9 @@ namespace Proyecto_Final.Migrations
                 name: "VentasDetalle");
 
             migrationBuilder.DropTable(
+                name: "Devoluciones");
+
+            migrationBuilder.DropTable(
                 name: "Usuarios");
 
             migrationBuilder.DropTable(
@@ -248,6 +299,9 @@ namespace Proyecto_Final.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ventas");
+
+            migrationBuilder.DropTable(
+                name: "Clientes");
         }
     }
 }

@@ -1,59 +1,45 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+//Using agregados
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
-using Proyecto_Final.Entidades;
 using Proyecto_Final.DAL;
+using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL
 {
-   public class DevolucionesBLL
+    public class DevolucionesBLL
     {
-        public static bool Guardar(Devoluciones Devoluciones)
+        //—————————————————————————————————————————————————————[ GUARDAR ]—————————————————————————————————————————————————————
+        public static bool Guardar(Devoluciones devoluciones)
         {
-            if (!Existe(Devoluciones.DevolucionId))
-                return Insetar(Devoluciones);
+            bool paso;
+
+            if (!Existe(devoluciones.DevolucionId))
+                paso = Insertar(devoluciones);
             else
-            {
-                return Modificar(Devoluciones);
-            }
+                paso = Modificar(devoluciones);
 
-        }
-        private static bool Insetar(Devoluciones Devoluciones)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-            try
-            {
-                //agregar la entidad que decea insertar en el contexto
-                contexto.Devoluciones.Add(Devoluciones);
-                paso = contexto.SaveChanges() > 0;
-
-            }
-            catch (Exception)
-            {
-                throw;
-
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
             return paso;
-
         }
-        private static bool Modificar(Devoluciones Devoluciones)
+        //—————————————————————————————————————————————————————[ INSERTAR ]—————————————————————————————————————————————————————
+        public static bool Insertar(Devoluciones devoluciones)
         {
-            bool paso = false;
             Contexto contexto = new Contexto();
+            bool paso = false;
+
             try
             {
-                //marcar la intidad como modificada para que el contexto sepa proceder
-                contexto.Entry(Devoluciones).State = EntityState.Modified;
-                paso = contexto.SaveChanges() > 0;
+                foreach (var item in devoluciones.Detalle)
+                {
+                    item.productos.Existencia += item.Cantidad;
+                    contexto.Entry(item.productos).State = EntityState.Modified;
+                }
 
+                contexto.Devoluciones.Add(devoluciones);
+                paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -63,24 +49,51 @@ namespace Proyecto_Final.BLL
             {
                 contexto.Dispose();
             }
+
             return paso;
         }
+        //—————————————————————————————————————————————————————[ MODIFICAR ]—————————————————————————————————————————————————————
+        public static bool Modificar(Devoluciones devoluciones)
+        {
+            Contexto contexto = new Contexto();
+            bool paso = false;
 
+            try
+            {
+                contexto.Database.ExecuteSqlRaw($"DELETE FROM DevolucionesDetalle WHERE DevolucionId={devoluciones.DevolucionId}");
+
+                foreach (var item in devoluciones.Detalle)
+                {
+                    contexto.Entry(item).State = EntityState.Added;
+                }
+
+                contexto.Entry(devoluciones).State = EntityState.Modified;
+                paso = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
+        //—————————————————————————————————————————————————————[ ELIMINAR ]—————————————————————————————————————————————————————
         public static bool Eliminar(int id)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
             try
             {
-                //buscar la entidad que se desea eliminar
-                var Devoluciones = contexto.Devoluciones.Find(id);
-                if (Devoluciones != null)
+                var devolucion = DevolucionesBLL.Buscar(id);
+                if (devolucion != null)
                 {
-                    contexto.Devoluciones.Remove(Devoluciones); //remover la entidad
+                    contexto.Devoluciones.Remove(devolucion);
                     paso = contexto.SaveChanges() > 0;
-
                 }
-
             }
             catch (Exception)
             {
@@ -90,61 +103,18 @@ namespace Proyecto_Final.BLL
             {
                 contexto.Dispose();
             }
+
             return paso;
         }
-
-        public static Devoluciones Buscar(int id)
-        {
-            Contexto contexto = new Contexto();
-            Devoluciones Devoluciones;
-            try
-            {
-                Devoluciones = contexto.Devoluciones.Find(id);
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return Devoluciones;
-
-        }
-
-        public static bool Existe(int id)
-        {
-            Contexto contexto = new Contexto();
-            bool encontrado = false;
-            try
-            {
-                encontrado = contexto.Devoluciones.Any(e => e.DevolucionId == id);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-
-            }
-            return encontrado;
-
-
-
-        }
+        //—————————————————————————————————————————————————————[ GETLIST ]—————————————————————————————————————————————————————
         public static List<Devoluciones> GetList(Expression<Func<Devoluciones, bool>> criterio)
         {
             List<Devoluciones> lista = new List<Devoluciones>();
             Contexto contexto = new Contexto();
+
             try
             {
-                //Obtener la lista y filtrarla segun el criterio recibido por parametro.
                 lista = contexto.Devoluciones.Where(criterio).ToList();
-
             }
             catch (Exception)
             {
@@ -153,19 +123,19 @@ namespace Proyecto_Final.BLL
             finally
             {
                 contexto.Dispose();
-
             }
+
             return lista;
         }
-
-        public static List<Devoluciones> GetDevoluciones()
+        //—————————————————————————————————————————————————————[ EXISTE ]—————————————————————————————————————————————————————
+        public static bool Existe(int id)
         {
-            List<Devoluciones> lista = new List<Devoluciones>();
+            bool encontrado = false;
             Contexto contexto = new Contexto();
+
             try
             {
-                lista = contexto.Devoluciones.ToList();
-
+                encontrado = contexto.Devoluciones.Any(p => p.DevolucionId == id);
             }
             catch (Exception)
             {
@@ -174,9 +144,34 @@ namespace Proyecto_Final.BLL
             finally
             {
                 contexto.Dispose();
-
             }
-            return lista;
+
+            return encontrado;
+        }
+        //—————————————————————————————————————————————————————[ BUSCAR ]————————————————————————————————————————————————————
+        public static Devoluciones Buscar(int id)
+        {
+            Devoluciones devoluciones = new Devoluciones();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                devoluciones = contexto.Devoluciones
+                    .Where(d => d.DevolucionId == id)
+                    .Include(d => d.Detalle)
+                    .ThenInclude(dl => dl.productos)
+                    .SingleOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return devoluciones;
         }
     }
 }

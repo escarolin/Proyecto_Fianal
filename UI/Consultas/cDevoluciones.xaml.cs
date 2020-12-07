@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,14 +8,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.Generic;
 using Proyecto_Final.BLL;
 using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.UI.Consultas
 {
-    /// <summary>
-    /// Interaction logic for cDevoluciones.xaml
-    /// </summary>
     public partial class cDevoluciones : Window
     {
         public cDevoluciones()
@@ -34,18 +31,17 @@ namespace Proyecto_Final.UI.Consultas
                     case 0:
                         try
                         {
-                            listado = DevolucionesBLL.GetList(u => u.UsuarioId == int.Parse(CriterioTextBox.Text));
+                            listado = DevolucionesBLL.GetList(d => d.DevolucionId == int.Parse(CriterioTextBox.Text));
                         }
                         catch (FormatException)
                         {
                             MessageBox.Show("Debes ingresar un Critero valido para aplicar este filtro.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                         break;
-
                     case 1:
                         try
                         {
-                            listado = DevolucionesBLL.GetList(u => u.ClienteId.Contains(CriterioTextBox.Text));
+                            listado = DevolucionesBLL.GetList(d => d.UsuarioId == int.Parse(CriterioTextBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -55,14 +51,13 @@ namespace Proyecto_Final.UI.Consultas
                     case 2:
                         try
                         {
-                            listado = DevolucionesBLL.GetList(u => u.VentaId.Contains(CriterioTextBox.Text));
+                            listado = DevolucionesBLL.GetList(d => d.ClienteId == int.Parse(CriterioTextBox.Text));
                         }
                         catch (FormatException)
                         {
                             MessageBox.Show("Debes ingresar un Critero valido para aplicar este filtro.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                         break;
-                    
                 }
             }
             else
@@ -81,5 +76,3 @@ namespace Proyecto_Final.UI.Consultas
         }
     }
 }
-
- 

@@ -22,10 +22,10 @@
                 <MenuItem Header="Consultas" Background="#FF005B87">
                     <MenuItem x:Name="cUsuariosMenuItem" Click="cUsuariosMenuItem_Click" Header="Consultar Usuarios" Background="#FF005B87"/>
                     <MenuItem x:Name="cClientesMenuItem" Click="cClientesMenuItem_Click" Header="Consultar Clientes" Background="#FF005B87"/>
-                    <MenuItem x:Name="cDevolucionesMenuItem" Click="cDevolucionesMenuItem_Click" Header="Consultar Devoluciones" Background="#FF005B87"/>
-                    <MenuItem x:Name="cEntradaProductosMenuItem" Click="cEntradaProductosMenuItem_Click" Header="Consultar Entrada de Productos" Background="#FF005B87"/>
                     <MenuItem x:Name="cProductosMenuItem" Click="cProductosMenuItem_Click" Header="Consultar Productos" Background="#FF005B87"/>
-                    <MenuItem x:Name="cVentasMenuItem" Click="cVentasMenuItem_Click" Header="Consultar ventas" Background="#FF005B87"/>
+                    <MenuItem x:Name="cEntradaProductosMenuItem" Click="cEntradaProductosMenuItem_Click" Header="Consultar Entrada de Productos" Background="#FF005B87"/>
+                    <MenuItem x:Name="cVentasMenuItem" Click="cVentasMenuItem_Click" Header="Consultar Ventas" Background="#FF005B87"/>
+                    <MenuItem x:Name="cDevolucionesMenuItem" Click="cDevolucionesMenuItem_Click" Header="Consultar Devoluciones" Background="#FF005B87"/>
                 </MenuItem>
 
                 <MenuItem Header="Ayuda" Background="#FF005B87">
