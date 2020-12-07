@@ -6,7 +6,7 @@
          xmlns:PasswordHelper="clr-namespace:Proyecto_Final.Imagenes.PasswordHelper"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Longin"
         mc:Ignorable="d"
-        Title="Longin" Height="350" Width="300">
+        Title="Login" Height="350" Width="300" WindowStartupLocation="CenterScreen" Icon="/Imagenes/usuario.png">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
